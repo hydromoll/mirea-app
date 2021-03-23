@@ -1,6 +1,5 @@
 import { StatusBar } from "expo-status-bar";
 // import AppLoading from "expo-app-loading";
-import React from "react";
 import Settings from "./screens/Settings";
 import Menu from "./images/menuicon";
 import Searchprof from "./screens/Searchprof";
@@ -13,6 +12,7 @@ import Pt from "./screens/Pt";
 import Sb from "./screens/Sb";
 import { createStackNavigator } from "@react-navigation/stack";
 import Stgs from "./screens/Stgs";
+import Main from "./screens/Main.js";
 // import AppNavigator from './navigator/AppNavigator';
 import { enableScreens } from "react-native-screens";
 import {
@@ -21,75 +21,178 @@ import {
 } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+  View,
+  SafeAreaView,
+  FlatList,
+} from "react-native";
+import styled, { withTheme } from "styled-components";
+import MiddleWareNavigator from "./middleware.js";
+
 const Tb = createBottomTabNavigator();
 const Inp = createStackNavigator();
 const Taab = createMaterialTopTabNavigator();
-const Hid = () => (
-  <NavigationContainer>
-    <Taab.Navigator
-      initialRouteName="Понедельник"
-      tabBarOptions={{
-        marginTop: 30,
-        activeTintColor: "#497dcd",
-        inactiveTintColor: "gray",
-        labelStyle: { fontSize: 23, marginTop: 50 },
-        style: {
-          backgroundColor: "#1f2025",
-        },
-      }}
-    >
-      <Taab.Screen name="Пн" component={Sec} options={{ tabBarLabel: "Пн" }} />
-      <Taab.Screen
-        name="Вт"
-        component={Toptabb}
-        options={{ tabBarLabel: "Вт" }}
-      />
-      <Taab.Screen
-        name="Ср"
-        component={Sreda}
-        options={{ tabBarLabel: "Ср" }}
-      />
-      <Taab.Screen name="Чт" component={Cht} options={{ tabBarLabel: "Чт" }} />
-      <Taab.Screen name="Пт" component={Pt} options={{ tabBarLabel: "Пт" }} />
-      <Taab.Screen name="Сб" component={Sb} options={{ tabBarLabel: "Сб" }} />
-    </Taab.Navigator>
-  </NavigationContainer>
-);
-const App = () => (
-  <NavigationContainer>
-    <Tb.Navigator
-      initialRouteName="Feed"
-      tabBarOptions={{
-        activeTintColor: "#e91e63",
-        style: {
-          backgroundColor: "#000",
-        },
-      }}
-    >
-      <Tb.Screen
-        name="Home"
-        component={Main}
-        options={{ tabBarIcon: ({ color }) => <Schedule /> }}
-      />
+//const state = State();
+const Main1 = () => {
+  const [day, setDay] = useState("Понедельник");
+  return (
+    <React.Fragment>
+      <Container>
+        <TopBar>
+          <Day>{day}</Day>
+          <Button>
+            {/* <Bg></Bg> */}
+            <Text>{"Неделя 2"}</Text>
+          </Button>
+        </TopBar>
+      </Container>
+      <NavigationContainer independent={true}>
+        <Taab.Navigator
+          initialRouteName="Понедельник"
+          tabBarOptions={{
+            activeTintColor: "#497dcd",
+            inactiveTintColor: "gray",
+            labelStyle: { fontSize: 23 },
+            style: {
+              backgroundColor: "#1f2025",
+            },
+          }}
+        >
+          <Taab.Screen
+            name="0"
+            component={Sec}
+            options={{ tabBarLabel: "Пн" }}
+            listeners={(e) => setDay("Понедельник")}
+          />
+          <Taab.Screen
+            name="1"
+            component={Sec}
+            options={{ tabBarLabel: "Вт" }}
+            listeners={(e) => setDay("Вторник")}
+          />
+          <Taab.Screen
+            name="2"
+            component={Sec}
+            options={{ tabBarLabel: "Ср" }}
+            listeners={(e) => setDay(e.route.name)}
+          />
+          <Taab.Screen
+            name="3"
+            component={Sec}
+            options={{ tabBarLabel: "Чт" }}
+          />
+          <Taab.Screen
+            name="4"
+            component={Sec}
+            options={{ tabBarLabel: "Пт" }}
+          />
+          <Taab.Screen
+            name="5"
+            component={Sec}
+            options={{ tabBarLabel: "Сб" }}
+          />
+        </Taab.Navigator>
+      </NavigationContainer>
+    </React.Fragment>
+  );
+};
 
-      <Tb.Screen
-        name="Settings"
-        component={Settings}
-        options={{ tabBarIcon: ({ color }) => <Menu /> }}
+const Container = styled.View`
+  height: 100px;
+  width: 100%;
+  background-color: #949494;
+  align-items: center;
+`;
+
+const TopBar = styled.View`
+  height: 100px;
+  width: 100%;
+  background-color: #1f2025;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Day = styled.Text`
+  font-size: 25px;
+  color: #fff;
+  margin: 20px 0 0 20px;
+`;
+const Button = styled.TouchableOpacity`
+  width: 80px;
+  height: 40px;
+  margin: 20px 20px 0 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: coral;
+`;
+/*const Bg = styled.View`
+  width: 80px;
+  height: 40px;
+  background-color: white;
+`;*/
+
+const App = () => (
+  <React.Fragment>
+    <NavigationContainer>
+      <Tb.Navigator
+        initialRouteName="Feed"
+        tabBarOptions={{
+          activeTintColor: "#e91e63",
+          style: {
+            backgroundColor: "#000",
+          },
+        }}
+      >
+        <Tb.Screen
+          name="Home"
+          component={Main1}
+          options={{ tabBarIcon: ({ color }) => <Schedule /> }}
+        />
+        <Tb.Screen
+          name="Settings"
+          component={MiddleWareNavigator}
+          options={{ tabBarIcon: ({ color }) => <Menu /> }}
+        />
+        {/* <Inp.Screen
+        name="Sec"
+        component={Sec}
+        options={{ tabBarVisible: true }}
       />
-      {/* <Inp.Screen name ="Login" component={Login}/> */}
-    </Tb.Navigator>
-  </NavigationContainer>
+      <Inp.Screen
+        name="Stgs"
+        component={Stgs}
+        options={{ tabBarVisible: false }}
+      />
+      <Inp.Screen
+        name="Srch"
+        component={Searchprof}
+        options={{ tabBarVisible: false }}
+      /> */}
+        {/* <Inp.Screen name="Login" component={Login} /> */}
+      </Tb.Navigator>
+    </NavigationContainer>
+  </React.Fragment>
 );
-const Main = () => (
-  <Inp.Navigator
-    screenOptions={{
-      headerShown: false,
-    }}
-  >
-    <Inp.Screen name="Sec" component={Sec} />
-    <Inp.Screen name="Stgs" component={Stgs} />
-    <Inp.Screen name="Srch" component={Searchprof} />
-  </Inp.Navigator>
-);
+
+// const Hid = () => (
+//   <NavigationContainer independent>
+//     <Inp.Navigator
+//       screenOptions={{
+//         headerShown: false,
+//       }}
+//     >
+//       <Inp.Screen name="Sec" component={Sec} />
+//       <Inp.Screen name="Stgs" component={Stgs} />
+//       <Inp.Screen name="Srch" component={Searchprof} />
+//     </Inp.Navigator>
+//   </NavigationContainer>
+// );
 export default App;
