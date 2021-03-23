@@ -47,8 +47,8 @@ const updateData = (data) => {
       } else if (weekType.length === 1) {
         updatePair.info[weekType] = formatePairData(pair, type);
       }
-      convertedData.push(updatePair);
     });
+    convertedData.push(updatePair);
   });
   return convertedData;
 };
@@ -78,7 +78,7 @@ const updateData = (data) => {
       ]
     */
 
-export default function Main() {
+export default function Main(props) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [semester, setSemester] = useState([]);
@@ -88,69 +88,36 @@ export default function Main() {
   useEffect(() => {
     fetch("http://api.mirea-assistant.ru/schedule?group=ivbo-08-19")
       .then((response) => response.json())
-      .then((json) => {
-        setData123(updateData(json));
-        setData(json.schedule);
-        setSemester(json.semester);
-        setInfo(json.info);
+      .then((json1) => {
+        const json = updateData(json1);
+        const key = props.route.name;
+        setData123(json.slice(key * 6, 6 + 6 * key));
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
   return (
     <Container>
-      <TopBar>
-        <Day>123</Day>
-        {data123.map((pair, key) => {
-          let pairs = [];
-          const weekTypes = Object.keys(pair.info);
-          weekTypes.forEach((week) => {
-            pairs.push(<Bred style={{ color: "white" }}>{week.name}</Bred>);
-          });
-          return pairs;
-        })}
-      </TopBar>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        // <FlatList
-        //   data={data}
-        //   keyExtractor={({ id }, index) => id}
-        //   renderItem={({ item }) => (
-        //     <Text style={{ color: "black" }}>
-        //       {item.number + "  "}
-        //       {item.day + "  "}
-        //       {(item.info.weeks = +"  ")}
-        //       {item.interval.startTime}
-        //       {item.interval.endTime + " "}
-        //       {item.info.name}
-        //     </Text>
-        //   )}
-        // />
         <FlatList
-          data={data123.slice(1, 6)}
+          style={{ width: "100%", height: 500, alignSelf: "stretch" }}
+          data={data123}
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => {
-            //console.warn(item);
             let pairs = [];
             const weekTypes = Object.keys(item.info);
             weekTypes.forEach((week) => {
-              // console.warn(week);
-
-              // if (stateDay === lesson[day] && stateWeek === lesson[week]) {
-              // }
-
-              if (week === "even") {
+              if (week === "odd") {
                 const { day, number, startTime, endTime } = item;
                 const { name, professor, type, room } = item.info[week];
                 pairs.push(
                   <Card>
-                    <Text
-                      style={{ color: "black" }}
-                    >{` ${professor} ${type} ${room}`}</Text>
-
+                    <Text style={{ color: "black" }}>{` ${professor} ${type} 
+                    ${room || "-"}`}</Text>
                     <Starttime>{`${startTime}`}</Starttime>
-                    <Name>{`${name}`}</Name>
+                    <Name>{`${name || "-"}`}</Name>
                     <Endtime>{`${endTime}`}</Endtime>
                     <Text></Text>
                   </Card>
@@ -192,7 +159,8 @@ const Bred = styled.Text`
 `;
 const Time = styled.Text``;
 const Card = styled.View`
-  background-color: #585858;
+  border: 1px black solid;
+  background-color: #414e58;
 `;
 const Starttime = styled.Text`
   color: purple;

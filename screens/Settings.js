@@ -22,6 +22,25 @@ import Grad from "../images/graduationicn";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 import Dog from "../images/Dog";
+import Stgs from "./Stgs";
+import Sec from "./Sec";
+import Srch from "./Searchprof";
+
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+
+const Inp = createStackNavigator();
+
+const Hid = () => (
+  <NavigationContainer independent={true}>
+    <Inp.Navigator>
+      <Inp.Screen name="Sec" component={Sec} />
+      <Inp.Screen name="Stgs" component={Stgs} />
+      <Inp.Screen name="Srch" component={Srch} />
+    </Inp.Navigator>
+  </NavigationContainer>
+);
+
 export default function App({ navigation }) {
   const sheetRef = React.useRef(1);
   const fall = new Animated.Value(1);
@@ -30,7 +49,6 @@ export default function App({ navigation }) {
       style={{
         backgroundColor: "#1f2025",
         padding: 16,
-        height: 250,
       }}
     >
       <Text style={{ color: "white", fontSize: 20 }}>Обратная связь</Text>
@@ -55,114 +73,115 @@ export default function App({ navigation }) {
     </View>
   );
   return (
-    <Container>
-      <BottomSheet
-        ref={sheetRef}
-        snapPoints={[200, 200, 0]}
-        borderRadius={16}
-        enabledInnerScrolling={false}
-        renderContent={renderContent}
-      />
-      <TopBar>
-        <Menu>Меню</Menu>
-      </TopBar>
-      <StatusBar style="auto" />
-      <Buttons>
-        <Search onPress={() => navigation.navigate("Srch")}>
-          <Text
-            style={{
-              color: "white",
-              marginTop: 50,
-              fontSize: 20,
-              marginLeft: 30,
-              paddingLeft: 10,
+    <React.Fragment>
+      <Container>
+        <BottomSheet
+          ref={sheetRef}
+          snapPoints={[200, 200, 0]}
+          borderRadius={16}
+          enabledInnerScrolling={false}
+          renderContent={renderContent}
+        />
+        <TopBar>
+          <Menu>Меню</Menu>
+        </TopBar>
+        <StatusBar style="auto" />
+        <Buttons>
+          <Search onPress={() => navigation.navigate("Srch")}>
+            <Text
+              style={{
+                color: "white",
+                marginTop: 50,
+                fontSize: 20,
+                marginLeft: 30,
+                paddingLeft: 10,
+              }}
+            >
+              <User />
+              Найти преподавателя
+            </Text>
+          </Search>
+          <Raspisanie
+            onPress={() => {
+              this.props.navigation.goBack();
             }}
           >
-            <User />
-            Найти преподавателя
-          </Text>
-        </Search>
-        <Raspisanie
-          onPress={() => {
-            this.props.navigation.goBack();
-          }}
-        >
-          <Text
-            style={{
-              color: "white",
-              marginTop: 50,
-              fontSize: 20,
-              marginLeft: 30,
-              paddingLeft: 10,
-            }}
-          >
-            <Grad />
-            Расписание сессии
-          </Text>
-        </Raspisanie>
-        <Obratnaya onPress={() => sheetRef.current.snapTo(0)}>
-          <Text
-            style={{
-              color: "white",
-              marginTop: 50,
-              fontSize: 20,
-              marginLeft: 30,
-              paddingLeft: 10,
-            }}
-          >
-            <Contact />
-            Обратная связь
-          </Text>
-        </Obratnaya>
-        <MySem>
-          <Text
-            style={{
-              color: "white",
-              marginTop: 50,
-              fontSize: 20,
-              marginLeft: 30,
-              paddingLeft: 10,
-            }}
-          >
-            <Rasp />
-            Мой семестр
-          </Text>
-        </MySem>
-        <Schema>
-          <Text
-            style={{
-              color: "white",
-              marginTop: 50,
-              fontSize: 20,
-              marginLeft: 30,
-              paddingLeft: 10,
-            }}
-          >
-            <Location />
-            Схема университета
-          </Text>
-        </Schema>
-        <Setting onPress={() => navigation.navigate("Stgs")}>
-          <Text
-            style={{
-              color: "white",
-              marginTop: 50,
-              fontSize: 20,
-              marginLeft: 30,
-              paddingLeft: 10,
-            }}
-          >
-            <Sicn />
-            Настройки
-          </Text>
-        </Setting>
-      </Buttons>
-    </Container>
+            <Text
+              style={{
+                color: "white",
+                marginTop: 50,
+                fontSize: 20,
+                marginLeft: 30,
+                paddingLeft: 10,
+              }}
+            >
+              <Grad />
+              Расписание сессии
+            </Text>
+          </Raspisanie>
+          <Obratnaya onPress={() => sheetRef.current.snapTo(0)}>
+            <Text
+              style={{
+                color: "white",
+                marginTop: 50,
+                fontSize: 20,
+                marginLeft: 30,
+                paddingLeft: 10,
+              }}
+            >
+              <Contact />
+              Обратная связь
+            </Text>
+          </Obratnaya>
+          <MySem>
+            <Text
+              style={{
+                color: "white",
+                marginTop: 50,
+                fontSize: 20,
+                marginLeft: 30,
+                paddingLeft: 10,
+              }}
+            >
+              <Rasp />
+              Мой семестр
+            </Text>
+          </MySem>
+          <Schema>
+            <Text
+              style={{
+                color: "white",
+                marginTop: 50,
+                fontSize: 20,
+                marginLeft: 30,
+                paddingLeft: 10,
+              }}
+            >
+              <Location />
+              Схема университета
+            </Text>
+          </Schema>
+          <Setting onPress={() => navigation.navigate("Stgs")}>
+            <Text
+              style={{
+                color: "white",
+                marginTop: 50,
+                fontSize: 20,
+                marginLeft: 30,
+                paddingLeft: 10,
+              }}
+            >
+              <Sicn />
+              Настройки
+            </Text>
+          </Setting>
+        </Buttons>
+      </Container>
+    </React.Fragment>
   );
 }
 
 const Container = styled.View`
-  flex: 1;
   width: 100%;
   height: 100%;
   background-color: #000;
