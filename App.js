@@ -47,7 +47,7 @@ const Main1 = () => {
           <TopBar>
             <Day>{day}</Day>
             <Button>
-              {/* <Bg></Bg> */}
+              {/* <Bg><22/Bg> */}
               <Text style={{ color: "#B8C3DE" }}>{"Неделя 2"}</Text>
             </Button>
           </TopBar>
