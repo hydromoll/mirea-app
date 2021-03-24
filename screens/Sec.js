@@ -159,7 +159,7 @@ const Card = styled.View`
   height: 100px;
   align-items: center;
 
-  /* border: 12px black so2222lid; */
+  /* border: 12px black so222232lid; */
   background-color: #141519;
   flex-direction: row;
 `;
