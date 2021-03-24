@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { createStackNavigator } from "@react-navigation/stack";
 import Srchicn from "../images/Searchicn";
-export default function App() {
+export default function App({ navigation }) {
   return (
     <Container>
       <TopBar>

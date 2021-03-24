@@ -41,15 +41,18 @@ const Main1 = () => {
   const [day, setDay] = useState("Понедельник");
   return (
     <React.Fragment>
-      <Container>
-        <TopBar>
-          <Day>{day}</Day>
-          <Button>
-            {/* <Bg></Bg> */}
-            <Text>{"Неделя 2"}</Text>
-          </Button>
-        </TopBar>
-      </Container>
+      <Toppolosa></Toppolosa>
+      <SafeAreaView>
+        <Container>
+          <TopBar>
+            <Day>{day}</Day>
+            <Button>
+              {/* <Bg></Bg> */}
+              <Text style={{ color: "#B8C3DE" }}>{"Неделя 2"}</Text>
+            </Button>
+          </TopBar>
+        </Container>
+      </SafeAreaView>
       <NavigationContainer independent={true}>
         <Taab.Navigator
           initialRouteName="Понедельник"
@@ -78,38 +81,48 @@ const Main1 = () => {
             name="2"
             component={Sec}
             options={{ tabBarLabel: "Ср" }}
-            listeners={(e) => setDay(e.route.name)}
+            listeners={(e) => setDay("Среда")}
           />
           <Taab.Screen
             name="3"
             component={Sec}
             options={{ tabBarLabel: "Чт" }}
+            listeners={(e) => setDay("Четверг")}
           />
           <Taab.Screen
             name="4"
             component={Sec}
             options={{ tabBarLabel: "Пт" }}
+            listeners={(e) => setDay("Пятница")}
           />
           <Taab.Screen
             name="5"
             component={Sec}
             options={{ tabBarLabel: "Сб" }}
+            listeners={(e) => setDay("Суббота")}
           />
         </Taab.Navigator>
       </NavigationContainer>
     </React.Fragment>
   );
 };
-
+const Toppolosa = styled.View`
+  position: absolute;
+  height: 300px;
+  width: 100%;
+  background-color: #1f2025;
+  top: 0;
+`;
 const Container = styled.View`
   height: 100px;
   width: 100%;
+  margin-top: 16px;
   background-color: #949494;
   align-items: center;
 `;
 
 const TopBar = styled.View`
-  height: 100px;
+  height: 110px;
   width: 100%;
   background-color: #1f2025;
   display: flex;
@@ -127,11 +140,11 @@ const Button = styled.TouchableOpacity`
   width: 80px;
   height: 40px;
   margin: 20px 20px 0 0;
-  background-color: white;
+  border-radius: 8px;
+  background-color: #3f4662;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: coral;
 `;
 /*const Bg = styled.View`
   width: 80px;

@@ -18,7 +18,10 @@ export default function MiddleWareNavigator() {
   return (
     <React.Fragment>
       <NavigationContainer independent>
-        <Tb.Navigator initialRouteName="Settings">
+        <Tb.Navigator
+          initialRouteName="Settings"
+          screenOptions={{ headerShown: false }}
+        >
           <Tb.Screen
             name="Settings"
             component={Settings}

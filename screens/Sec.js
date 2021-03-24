@@ -102,7 +102,11 @@ export default function Main(props) {
         <ActivityIndicator />
       ) : (
         <FlatList
-          style={{ width: "100%", height: 500, alignSelf: "stretch" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            alignSelf: "stretch",
+          }}
           data={data123}
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => {
@@ -114,12 +118,19 @@ export default function Main(props) {
                 const { name, professor, type, room } = item.info[week];
                 pairs.push(
                   <Card>
-                    <Text style={{ color: "black" }}>{` ${professor} ${type} 
-                    ${room || "-"}`}</Text>
-                    <Starttime>{`${startTime}`}</Starttime>
-                    <Name>{`${name || "-"}`}</Name>
-                    <Endtime>{`${endTime}`}</Endtime>
-                    <Text></Text>
+                    <Time>
+                      <Starttime>{`${startTime}`}</Starttime>
+                      <Endtime
+                        style={{ marginTop: 10 }}
+                      >{`${endTime}`}</Endtime>
+                    </Time>
+                    <Title>
+                      <Name>{`${name || "—"} ${type}`}</Name>
+                      <Text style={{ color: "gray" }}>{`${
+                        professor || "—"
+                      }`}</Text>
+                    </Title>
+                    <Rooom style={{ color: "white" }}>{`${room || "—"}`}</Rooom>
                   </Card>
                 );
               }
@@ -138,35 +149,53 @@ const Container = styled.View`
   flex: 1;
   height: 100%;
   width: 100%;
-  background-color: #949494;
+  background-color: #141519;
   align-items: center;
 `;
-const TopBar = styled.View`
-  height: 161px;
-  margin-top: 0px;
-  width: 100%;
-  background-color: #1f2025;
-`;
-const Day = styled.Text`
-  margin-top: 50px;
-  margin-left: 16px;
-  font-size: 25px;
-  color: #fff;
-`;
-const Bred = styled.Text`
-  align-items: center;
-  justify-content: center;
-`;
-const Time = styled.Text``;
+
 const Card = styled.View`
-  border: 1px black solid;
-  background-color: #414e58;
+  padding-left: 22px;
+  padding-right: 22px;
+  height: 100px;
+  align-items: center;
+
+  /* border: 1px black solid; */
+  background-color: #141519;
+  flex-direction: row;
 `;
+const Time = styled.View`
+  margin-top: 15px;
+`;
+
 const Starttime = styled.Text`
-  color: purple;
+  color: #929395;
   font-size: 16px;
 `;
 const Endtime = styled.Text`
+  color: #929395;
   font-size: 16px;
 `;
-const Name = styled.Text``;
+
+const Name = styled.Text`
+  color: white;
+`;
+const Title = styled.View`
+  padding-top: 2%;
+  padding-left: 5%;
+  width: 65%;
+`;
+const Room = styled.View`
+  align-self: center;
+  background-color: #4b4f5b;
+  border-radius: 5px;
+  padding: 2%;
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+const Rooom = styled.Text`
+  background-color: #4b4f5b;
+  border-radius: 5px;
+  padding: 2%;
+  padding-left: 15px;
+  padding-right: 15px;
+`;

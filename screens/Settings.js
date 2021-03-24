@@ -47,19 +47,20 @@ export default function App({ navigation }) {
   const renderContent = () => (
     <View
       style={{
+        height: 250,
         backgroundColor: "#1f2025",
         padding: 16,
       }}
     >
       <Text style={{ color: "white", fontSize: 20 }}>Обратная связь</Text>
       <Writevk onPress={() => Linking.openURL("http://vk.com/hydromol")}>
-        <Text style={{ color: "white", fontSize: 20 }}>
+        <Text style={{ color: "white", fontSize: 20, marginTop: 20 }}>
           <Vkicn />
           Написать в ВК
         </Text>
       </Writevk>
       <Writetg>
-        <Text style={{ color: "white", fontSize: 20 }}>
+        <Text style={{ color: "white", fontSize: 20, marginTop: 20 }}>
           <Tgicn />
           Написать в Telegram
         </Text>
@@ -77,9 +78,8 @@ export default function App({ navigation }) {
       <Container>
         <BottomSheet
           ref={sheetRef}
-          snapPoints={[200, 200, 0]}
+          snapPoints={[250, 250, 0]}
           borderRadius={16}
-          enabledInnerScrolling={false}
           renderContent={renderContent}
         />
         <TopBar>
