@@ -5,14 +5,7 @@ import Menu from "./images/menuicon";
 import Searchprof from "./screens/Searchprof";
 import Schedule from "./images/Scheduleicon";
 import Sec from "./screens/Sec";
-import Toptabb from "./screens/Vt";
-import Sreda from "./screens/Sreda";
-import Cht from "./screens/Cht";
-import Pt from "./screens/Pt";
-import Sb from "./screens/Sb";
 import { createStackNavigator } from "@react-navigation/stack";
-import Stgs from "./screens/Stgs";
-import Main from "./screens/Main.js";
 // import AppNavigator from './navigator/AppNavigator';
 import { enableScreens } from "react-native-screens";
 import {
@@ -36,9 +29,47 @@ import MiddleWareNavigator from "./middleware.js";
 const Tb = createBottomTabNavigator();
 const Inp = createStackNavigator();
 const Taab = createMaterialTopTabNavigator();
+function getWeekNumber(startYear, d) {
+  // Copy date so don't modify original
+  d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  // Set to nearest Thursday: current date + 4 - current day number
+  // Make Sunday's day number 7
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  // Get first day of year
+  const yearStart = new Date(startYear);
+  // Calculate full weeks to nearest Thursday
+  const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  // Return array of year and week number
+  return weekNo;
+}
+Date.prototype.getWeek = function () {
+  var onejan = new Date(this.getFullYear(), 0, 1);
+  return Math.ceil(((this - onejan) / 86400000 + onejan.getDay() + 1) / 7);
+};
+
+// function getWeek() {
+//   const now = new Date();
+//   const september = new Date(now.getFullYear() + "-09-01");
+//   return getWeekNumber(september)[1];
+// }
+// if (getWeekNumber(september)[1] % 2 == 0) {
+//   if ((getWeekNumber(now)[1] + 1) % 2 == 0) {
+//     return "even";
+//   } else {
+//     return "odd";
+//   }
+// } else {
+//   if (getWeekNumber(now)[1] % 2 == 0) {
+//     return "even";
+//   } else {
+//     return "odd";
+//   }
+// }
 //const state = State();
 const Main1 = () => {
   const [day, setDay] = useState("Понедельник");
+  const startDate = new Date("2021-02-08T00:00:00.000Z");
+  const date = new Date();
   return (
     <React.Fragment>
       <Toppolosa></Toppolosa>
@@ -48,14 +79,17 @@ const Main1 = () => {
             <Day>{day}</Day>
             <Button>
               {/* <Bg><22/Bg> */}
-              <Text style={{ color: "#B8C3DE" }}>{"Неделя 2"}</Text>
+              <Text style={{ color: "#B8C3DE" }}>{`Неделя ${getWeekNumber(
+                startDate,
+                date
+              )}`}</Text>
             </Button>
           </TopBar>
         </Container>
       </SafeAreaView>
       <NavigationContainer independent={true}>
         <Taab.Navigator
-          initialRouteName="Понедельник"
+          initialRouteName={(date.getDay() - 1).toString()}
           tabBarOptions={{
             activeTintColor: "#497dcd",
             inactiveTintColor: "gray",
@@ -158,6 +192,7 @@ const App = () => (
       <Tb.Navigator
         initialRouteName="Feed"
         tabBarOptions={{
+          showLabel: false,
           activeTintColor: "#e91e63",
           style: {
             backgroundColor: "#000",
@@ -167,12 +202,14 @@ const App = () => (
         <Tb.Screen
           name="Home"
           component={Main1}
-          options={{ tabBarIcon: ({ color }) => <Schedule /> }}
+          options={{
+            tabBarIcon: ({ focused }) => <Schedule focused={focused} />,
+          }}
         />
         <Tb.Screen
           name="Settings"
           component={MiddleWareNavigator}
-          options={{ tabBarIcon: ({ color }) => <Menu /> }}
+          options={{ tabBarIcon: ({ focused }) => <Menu focused={focused} /> }}
         />
         {/* <Inp.Screen
         name="Sec"

@@ -125,12 +125,16 @@ export default function Main(props) {
                       >{`${endTime}`}</Endtime>
                     </Time>
                     <Title>
-                      <Name>{`${name || "—"} ${type}`}</Name>
+                      <Name>{`${name + (name && ",") || "—"} ${type}`}</Name>
                       <Text style={{ color: "gray" }}>{`${
                         professor || "—"
                       }`}</Text>
                     </Title>
-                    <Rooom style={{ color: "white" }}>{`${room || "—"}`}</Rooom>
+                    <Rooom
+                      style={{
+                        color: "white",
+                      }}
+                    >{`${room || "—"}`}</Rooom>
                   </Card>
                 );
               }
@@ -154,16 +158,19 @@ const Container = styled.View`
 `;
 
 const Card = styled.View`
+  display: flex;
+  justify-content: space-between;
   padding-left: 22px;
   padding-right: 22px;
   height: 100px;
   align-items: center;
 
-  /* border: 12px black so222232lid; */
+  /* border: 12px black so2222322lid; */
   background-color: #141519;
   flex-direction: row;
 `;
 const Time = styled.View`
+  width: 15%;
   margin-top: 15px;
 `;
 
@@ -177,6 +184,7 @@ const Endtime = styled.Text`
 `;
 
 const Name = styled.Text`
+  font-size: 18px;
   color: white;
 `;
 const Title = styled.View`
@@ -184,18 +192,10 @@ const Title = styled.View`
   padding-left: 5%;
   width: 65%;
 `;
-const Room = styled.View`
-  align-self: center;
-  background-color: #4b4f5b;
-  border-radius: 5px;
-  padding: 2%;
-  padding-left: 15px;
-  padding-right: 15px;
-`;
 const Rooom = styled.Text`
+  width: 20%;
+  text-align: center;
   background-color: #4b4f5b;
   border-radius: 5px;
-  padding: 2%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 5px 10px;
 `;

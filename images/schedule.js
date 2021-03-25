@@ -1,5 +1,5 @@
-import * as React from "react"
-import Svg, { G, Circle, Path } from "react-native-svg"
+import * as React from "react";
+import Svg, { G, Circle, Path } from "react-native-svg";
 
 function SvgComponent(props) {
   return (
@@ -8,7 +8,7 @@ function SvgComponent(props) {
       width={30}
       height={30}
       viewBox="0 0 50 50"
-      style={{padding:20}}
+      style={{ padding: 20 }}
       {...props}
     >
       <G data-name="Group 3">
@@ -86,7 +86,7 @@ function SvgComponent(props) {
         </G>
       </G>
     </Svg>
-  )
+  );
 }
 
-export default SvgComponent
+export default SvgComponent;

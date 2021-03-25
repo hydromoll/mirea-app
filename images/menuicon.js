@@ -1,6 +1,5 @@
-import * as React from "react"
-import Svg, { G, Rect } from "react-native-svg"
-
+import * as React from "react";
+import Svg, { G, Rect } from "react-native-svg";
 function SvgComponent(props) {
   return (
     <Svg
@@ -10,7 +9,11 @@ function SvgComponent(props) {
       viewBox="0 0 23 16"
       {...props}
     >
-      <G data-name="Group 4" transform="translate(-317 -853)" fill="#6c6c6c">
+      <G
+        data-name="Group 4"
+        transform="translate(-317 -853)"
+        fill={props.focused ? "#497dcd" : "#4b4f5b"}
+      >
         <Rect
           data-name="Rectangle 6"
           width={28}
@@ -34,7 +37,7 @@ function SvgComponent(props) {
         />
       </G>
     </Svg>
-  )
+  );
 }
 
-export default SvgComponent
+export default SvgComponent;

@@ -7,7 +7,8 @@ export default function App() {
   return (
     <Container>
       <Logo></Logo>
-      <Txt>MIREA Assiatant</Txt>
+      <Txt>MIREA Assiatant 1.0</Txt>
+      <Dev>by hydromoll and Misha98857</Dev>
       <GroupContainer>
         <Urgrp style={{ fontSize: 20 }}>Ваша группа</Urgrp>
         <GroupNum>
@@ -69,3 +70,4 @@ const GroupNum = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
+const Dev = styled.Text``;

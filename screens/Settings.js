@@ -95,10 +95,12 @@ export default function App({ navigation }) {
                 fontSize: 20,
                 marginLeft: 30,
                 paddingLeft: 10,
+                display: "flex",
+                alignItems: "center",
               }}
             >
               <User />
-              Найти преподавателя
+              <Text style={{ marginLeft: 10 }}>Найти преподавателя</Text>
             </Text>
           </Search>
           <Raspisanie
@@ -119,7 +121,7 @@ export default function App({ navigation }) {
               Расписание сессии
             </Text>
           </Raspisanie>
-          <Obratnaya onPress={() => sheetRef.current.snapTo(0)}>
+          <Obratnaya onPress={() => sheetRef.current.snapTo(1)}>
             <Text
               style={{
                 color: "white",
