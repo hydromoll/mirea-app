@@ -1,6 +1,6 @@
 import Menu from "./images/menuicon";
 import Schedule from "./images/Scheduleicon";
-import Sec from "./screens/Sec";
+import daySchedule from "./screens/daySchedule";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -74,7 +74,7 @@ const ScheduleScreen = () => {
             <weekDaysNavigator.Screen
               key={index}
               name={index.toString()}
-              component={Sec}
+              component={daySchedule}
               options={{ tabBarLabel: daySortName }}
               listeners={(e) => setDay(dayFullName)}
             />

@@ -5,7 +5,7 @@ import styled, { withTheme } from "styled-components";
 import Schedule from "./images/schedule";
 
 import Stgs from "./screens/Stgs";
-import Sec from "./screens/Sec";
+import Sec from "./screens/daySchedule";
 import Srch from "./screens/Searchprof";
 import Settings from "./screens/Settings";
 

@@ -14,7 +14,7 @@ import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 import Dog from "../images/Dog";
 import Stgs from "./Stgs";
-import Sec from "./Sec";
+import Sec from "./daySchedule";
 import Srch from "./Searchprof";
 
 import { createStackNavigator } from "@react-navigation/stack";
