@@ -1,16 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Settings,
-  Linking,
-} from "react-native";
-import styled, { withTheme } from "styled-components";
-import Idk from "./Stgs";
-import Schedule from "../images/schedule";
+import { Text, View, Linking } from "react-native";
+import styled from "styled-components";
 import Sicn from "../images/Settingsicn";
 import Vkicn from "../images/Vkicn";
 import Tgicn from "../images/Tgicn";
