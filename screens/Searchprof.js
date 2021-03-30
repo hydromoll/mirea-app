@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { createStackNavigator } from "@react-navigation/stack";
 import Srchicn from "../images/Searchicn";
 export default function App({ navigation }) {
   return (
@@ -10,7 +9,7 @@ export default function App({ navigation }) {
           <Text>Test</Text>
         </Back>
         <SearchBox
-          style={{ padding: 20 }}
+          style={{ padding: 10 }}
           placeholder="Имя преподавателя"
           placeholderTextColor="#1f2025"
         ></SearchBox>

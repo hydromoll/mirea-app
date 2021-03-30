@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
+import convertScheduleData from "../utils/daysAdapter.js";
 import {
   StyleSheet,
   ActivityIndicator,
@@ -10,88 +11,24 @@ import {
 } from "react-native";
 import styled, { withTheme } from "styled-components";
 
-const formatePairData = (pair, type) => {
-  return {
-    name: pair.name,
-    room: pair.room,
-    professor: pair.professor,
-    type: pair.type,
-  };
-};
-
-const updateData = (data) => {
-  const { schedule } = data;
-  const convertedData = [];
-
-  schedule.forEach((globalPair) => {
-    const { day, number, info: pairs, interval, type } = globalPair;
-
-    const updatePair = {
-      info: {},
-      startTime: interval.startTime,
-      endTime: interval.endTime,
-      number: number,
-      day: day,
-    };
-    pairs.forEach((pair) => {
-      const weekType = pair.weeks;
-      if (weekType === "odd") {
-        updatePair.info[weekType] = formatePairData(pair, type);
-      } else if (weekType === "even") {
-        updatePair.info[weekType] = formatePairData(pair, type);
-      } else if (weekType.includes(",")) {
-        const parsedWeeks = weekType.split(",");
-        parsedWeeks.forEach((weekNumber) => {
-          updatePair.info[weekNumber] = formatePairData(pair, type);
-        });
-      } else if (weekType.length === 1) {
-        updatePair.info[weekType] = formatePairData(pair, type);
-      }
-    });
-    convertedData.push(updatePair);
-  });
-  return convertedData;
-};
-
-//const { day, number, info: pairs, interval } = data;
-// week is odd, even, number "3,7" and "3"
-
-/*
-      [ 
-        {
-          startTime: "",
-          endTime: "",
-          day: "",
-          number: "",
-          info: {
-          "even": {
-            name: "",
-            room: "",
-            professor: "",
-            type: ""
-          },
-          "odd": {} ,
-          "3": {},
-          "7": {}
-          }
-        }
-      ]
-    */
-
 export default function Main(props) {
   const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [semester, setSemester] = useState([]);
   const [data123, setData123] = useState([]);
-  const [info, setInfo] = useState([]);
-  const odd = "odd";
   useEffect(() => {
     fetch("http://api.mirea-assistant.ru/schedule?group=ivbo-08-19")
       .then((response) => response.json())
       .then((json1) => {
-        const json = updateData(json1);
+        const json = convertScheduleData(json1);
         const key = props.route.name;
-        setData123(json.slice(key * 6, 6 + 6 * key));
+        setData123(
+          json
+            .slice(key * 6, 6 + 6 * key)
+            .sort((pairs, newPairs) => pairs.number - newPairs.number)
+            .map((pair, index) => {
+              pair.key = index.toString();
+              return pair;
+            })
+        );
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
@@ -108,16 +45,18 @@ export default function Main(props) {
             alignSelf: "stretch",
           }}
           data={data123}
-          keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => {
+            let renderPairs = [];
             let pairs = [];
-            const weekTypes = Object.keys(item.info);
-            weekTypes.forEach((week) => {
-              if (week === "odd") {
-                const { day, number, startTime, endTime } = item;
-                const { name, professor, type, room } = item.info[week];
-                pairs.push(
-                  <Card>
+            const { day, number, startTime, endTime } = item;
+
+            for (let key of Object.keys(item.info)) {
+              // TODO calculate weekType and current week
+              // TODO need past week from api usage getWeekNamer method calculate odd or even and get week number
+              if (key === "8" || key === "even") {
+                const { name, professor, type, room } = item.info[key];
+                renderPairs.push(
+                  <Card key={item.key}>
                     <Time>
                       <Starttime>{`${startTime}`}</Starttime>
                       <Endtime
@@ -137,9 +76,11 @@ export default function Main(props) {
                     >{`${room || "—"}`}</Rooom>
                   </Card>
                 );
+                break;
               }
-            });
-            return pairs;
+            }
+
+            return renderPairs;
           }}
         />
       )}

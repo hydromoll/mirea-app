@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Linking } from "react-native";
 import styled, { withTheme } from "styled-components";
 import Schedule from "./images/schedule";
-
+import Start from "./screens/Start";
 import Stgs from "./screens/Stgs";
 import Sec from "./screens/daySchedule";
 import Srch from "./screens/Searchprof";
@@ -13,6 +13,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
 const Tb = createStackNavigator();
+const Sb = styled.TouchableOpacity`
+  background-color: black;
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+`;
 
 export default function MiddleWareNavigator() {
   return (
@@ -20,7 +27,13 @@ export default function MiddleWareNavigator() {
       <NavigationContainer independent>
         <Tb.Navigator
           initialRouteName="Settings"
-          screenOptions={{ headerShown: false }}
+          screenOptions={{
+            headerShown: true,
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "#1f2025",
+            },
+          }}
         >
           <Tb.Screen
             name="Settings"
@@ -28,6 +41,7 @@ export default function MiddleWareNavigator() {
             options={{ tabBarIcon: ({ color }) => <Schedule /> }}
           />
           <Tb.Screen name="Sec" component={Sec} />
+          <Tb.Screen name="Start" component={Start} />
           <Tb.Screen name="Stgs" component={Stgs} />
           <Tb.Screen name="Srch" component={Srch} />
         </Tb.Navigator>
