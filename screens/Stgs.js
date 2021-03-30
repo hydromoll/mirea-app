@@ -16,7 +16,7 @@ export default function App({ navigation }) {
         <Cont>
           <Logo></Logo>
           <Title>MIREA Assiatant 1.0</Title>
-          <Developers>by hydromoll and Misha98857</Developers>
+          <Developers>by hydromoll and misha98857</Developers>
           <GroupContainer>
             <Urgrp>Ваша группа</Urgrp>
             <GroupNum>
