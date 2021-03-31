@@ -42,7 +42,7 @@ export default function MiddleWareNavigator() {
           />
           <Tb.Screen name="Sec" component={Sec} />
           <Tb.Screen name="Start" component={Start} />
-          <Tb.Screen name="Stgs" component={Stgs} />
+          <Tb.Screen name="Настройки" component={Stgs} />
           <Tb.Screen name="Srch" component={Srch} />
         </Tb.Navigator>
       </NavigationContainer>

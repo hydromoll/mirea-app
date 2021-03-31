@@ -7,12 +7,6 @@ export default function App({ navigation }) {
   return (
     <SafeAreaView>
       <Container>
-        <TopBar>
-          <Menu>
-            {/* <Back onPress={() => navigation.goBack()} /> */}
-            Настройки
-          </Menu>
-        </TopBar>
         <Cont>
           <Logo></Logo>
           <Title>MIREA Assiatant 1.0</Title>
@@ -34,23 +28,6 @@ const Container = styled.View`
   height: 100%;
   background-color: #141519;
 `;
-const TopBar = styled.View`
-  flex-direction: row;
-  height: 100px;
-  width: 100%;
-  background-color: #1f2025;
-`;
-const Menu = styled.Text`
-  color: #fff;
-  margin-left: 22px;
-  margin-top: 50px;
-  font-size: 22px;
-`;
-const Settingg = styled.Text`
-  margin-top: 5%;
-  color: #fff;
-  font-size: 22px;
-`;
 const Cont = styled.View`
   margin-top: 25%;
   align-items: center;
@@ -69,9 +46,10 @@ const Developers = styled.Text`
   margin-top: 5%;
 `;
 const GroupContainer = styled.View`
-  width: 350px;
-  height: 100px;
+  width: 85%;
+  height: 35%;
   border-radius: 10px;
+  padding: 5%;
   background-color: #1f2025;
   align-items: center;
   flex-direction: row;
@@ -90,7 +68,7 @@ const Problem = styled.Text`
   color: #6180e8;
 `;
 const GroupNum = styled.TouchableOpacity`
-  width: 150px;
+  width: 45%;
   height: 50px;
   border-radius: 9px;
   margin-left: 50px;

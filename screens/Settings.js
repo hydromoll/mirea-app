@@ -4,7 +4,6 @@ import { Text, View, Linking } from "react-native";
 import styled from "styled-components";
 import Sicn from "../images/Settingsicn";
 import BottomSheet from "reanimated-bottom-sheet";
-import Dog from "../images/Dog";
 import {
   User,
   Vk,
@@ -16,7 +15,7 @@ import {
   Mail,
 } from "../images/Icons";
 export default function App({ navigation }) {
-  const sheetRef = React.useRef(110);
+  const sheetRef = React.useRef(0);
   const buttonList = [
     {
       title: "Обратная связь",
@@ -26,7 +25,7 @@ export default function App({ navigation }) {
     {
       title: "Настройки",
       icon: <Sicn />,
-      navigation: () => navigation.navigate("Stgs"),
+      navigation: () => navigation.navigate("Настройки"),
     },
   ];
   const renderContent = () => (
@@ -38,21 +37,49 @@ export default function App({ navigation }) {
       }}
     >
       <ContactUs>Обратная связь</ContactUs>
-      <Writevk onPress={() => Linking.openURL("http://vk.com/hydromol")}>
-        <Text style={{ color: "white", fontSize: 20, marginTop: 20 }}>
-          <Vk />
+      <Writevk
+        style={{ marginTop: 20, flexDirection: "row" }}
+        onPress={() => Linking.openURL("http://vk.com/hydromol")}
+      >
+        <Vk />
+        <Text
+          style={{
+            color: "white",
+            fontSize: 20,
+
+            paddingLeft: 10,
+          }}
+        >
           Написать в ВК
         </Text>
       </Writevk>
-      <Writetg>
-        <Text style={{ color: "white", fontSize: 20, marginTop: 20 }}>
-          <Tg />
+      <Writetg
+        style={{ marginTop: 20, flexDirection: "row" }}
+        onPress={() => Linking.openURL("https://t.me/hydromoll")}
+      >
+        <Tg />
+        <Text
+          style={{
+            color: "white",
+            fontSize: 20,
+            paddingLeft: 10,
+          }}
+        >
           Написать в Telegram
         </Text>
       </Writetg>
-      <WriteMail>
-        <Text style={{ color: "white", fontSize: 20 }}>
-          <Mail />
+      <WriteMail
+        onPress={() => Linking.openURL("mailto:hydromoll@mail.ru")}
+        style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}
+      >
+        <Mail />
+        <Text
+          style={{
+            color: "white",
+            fontSize: 20,
+            paddingLeft: 10,
+          }}
+        >
           Написать на почту
         </Text>
       </WriteMail>
@@ -61,9 +88,6 @@ export default function App({ navigation }) {
   return (
     <React.Fragment>
       <Container>
-        <TopBar>
-          <Menu>Меню</Menu>
-        </TopBar>
         <StatusBar style="auto" />
         <BottomSheet
           ref={sheetRef}
@@ -100,21 +124,6 @@ const Container = styled.View`
   height: 100%;
   background-color: #000;
 `;
-const TopBar = styled.View`
-  height: 100px;
-  width: 100%;
-  background-color: #1f2025;
-`;
-const Menu = styled.Text`
-  color: #fff;
-  margin-left: 22px;
-  margin-top: 50px;
-  font-size: 22px;
-`;
-const Buttons = styled.View`
-  flex-direction: column;
-  justify-content: center;
-`;
 const ContactUs = styled.Text`
   color: white;
   font-size: 20px;
@@ -127,17 +136,6 @@ const Sb = styled.TouchableOpacity`
   justify-content: center;
 `;
 const Search = styled.TouchableOpacity``;
-const Raspisanie = styled.TouchableOpacity``;
-const Obratnaya = styled.TouchableOpacity``;
-const MySem = styled.TouchableOpacity``;
-const Schema = styled.TouchableOpacity``;
-const Setting = styled.TouchableOpacity``;
 const Writevk = styled.TouchableOpacity``;
 const Writetg = styled.TouchableOpacity``;
 const WriteMail = styled.TouchableOpacity``;
-const But = styled.TouchableOpacity`
-  color: blue;
-  height: 20px;
-  width: 20px;
-  background-color: coral;
-`;
