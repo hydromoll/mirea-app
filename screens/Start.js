@@ -2,22 +2,26 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import styled from "styled-components";
-export default function Main(navigation) {
+export default function Main(props) {
   return (
     <Container>
       <StatusBar style="auto" />
       <Hi>Привет!</Hi>
       <GroupField
+        onPress={() => props.chooseGroupEvent()}
         placeholder="Введите группу"
         placeholderTextColor="white"
       ></GroupField>
       <Forward></Forward>
       <Problembutton>
-        <Problem>Возникла проблема?</Problem>
+        <Problem onPress={() => props.chooseGroupEvent()}>
+          Возникла проблема?
+        </Problem>
       </Problembutton>
     </Container>
   );
 }
+
 const Container = styled.View`
   height: 100%;
   width: 100%;
@@ -26,7 +30,7 @@ const Container = styled.View`
   align-items: center;
 `;
 const Hi = styled.Text`
-  color: coral;
+  color: white;
   font-size: 28px;
 `;
 const GroupField = styled.TextInput`

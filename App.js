@@ -9,6 +9,7 @@ import { Text, SafeAreaView } from "react-native";
 import styled from "styled-components";
 import MiddleWareNavigator from "./middleware.js";
 import getWeekNumber from "./utils/calculateWeek";
+import Start from "./screens/Start";
 
 const bottomTabNavigator = createBottomTabNavigator();
 const weekDaysNavigator = createMaterialTopTabNavigator();
@@ -122,35 +123,42 @@ const WeekNum = styled.Text`
   color: #b8c3de;
 `;
 
-const App = () => (
-  <React.Fragment>
-    <NavigationContainer>
-      <bottomTabNavigator.Navigator
-        initialRouteName="Home"
-        tabBarOptions={{
-          showLabel: false,
-          activeTintColor: "#e91e63",
-          style: {
-            backgroundColor: "#1f2025",
-            borderTopColor: "#1f2025",
-          },
-        }}
-      >
-        <bottomTabNavigator.Screen
-          name="Home"
-          component={ScheduleScreen}
-          options={{
-            tabBarIcon: ({ focused }) => <Schedule focused={focused} />,
+const App = () => {
+  const [showRealApp, setShowRealApp] = useState(false);
+  if (showRealApp) {
+    return (
+      <NavigationContainer>
+        <bottomTabNavigator.Navigator
+          initialRouteName="Home"
+          tabBarOptions={{
+            showLabel: false,
+            activeTintColor: "#e91e63",
+            style: {
+              backgroundColor: "#1f2025",
+              borderTopColor: "#1f2025",
+            },
           }}
-        />
-        <bottomTabNavigator.Screen
-          name="Settings"
-          component={MiddleWareNavigator}
-          options={{ tabBarIcon: ({ focused }) => <Menu focused={focused} /> }}
-        />
-      </bottomTabNavigator.Navigator>
-    </NavigationContainer>
-  </React.Fragment>
-);
+        >
+          <bottomTabNavigator.Screen
+            name="Home"
+            component={ScheduleScreen}
+            options={{
+              tabBarIcon: ({ focused }) => <Schedule focused={focused} />,
+            }}
+          />
+          <bottomTabNavigator.Screen
+            name="Settings"
+            component={MiddleWareNavigator}
+            options={{
+              tabBarIcon: ({ focused }) => <Menu focused={focused} />,
+            }}
+          />
+        </bottomTabNavigator.Navigator>
+      </NavigationContainer>
+    );
+  } else {
+    return <Start chooseGroupEvent={() => setShowRealApp(true)} />;
+  }
+};
 
 export default App;

@@ -39,7 +39,7 @@ export default function App({ navigation }) {
       <ContactUs>Обратная связь</ContactUs>
       <Writevk
         style={{ marginTop: 20, flexDirection: "row" }}
-        onPress={() => Linking.openURL("http://vk.com/hydromol")}
+        onPress={() => Linking.openURL("https://vk.com/hydromol")}
       >
         <Vk />
         <Text
