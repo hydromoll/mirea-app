@@ -14,7 +14,7 @@ export default function settingsView() {
       <GroupContainer>
         <Urgrp>Ваша группа</Urgrp>
         <GroupNum>
-          <Text style={{ color: "white", fontSize: 20 }}> ИВБО-13-19 </Text>
+          <Urgrp> ИВБО-13-19 </Urgrp>
         </GroupNum>
       </GroupContainer>
       <Problem>Возникла проблема?</Problem>
@@ -43,10 +43,11 @@ const Logo = styled.Image`
 const Title = styled.Text`
   margin-top: 8%;
   color: white;
-  font-size: 20px;
+  font-size: ${normalize(20)};
 `;
 const Developers = styled.Text`
-  font-size: 20px;
+  font-size: ${normalize(20)};
+
   color: white;
   margin-top: 5%;
 `;
@@ -63,17 +64,17 @@ const GroupContainer = styled.View`
 `;
 const Urgrp = styled.Text`
   color: white;
-  font-size: 20px;
+  font-size: ${normalize(16)};
 `;
 const Problem = styled.Text`
   align-self: center;
   position: absolute;
-  font-size: 16px;
+  font-size: ${normalize(16)};
   bottom: 25px;
   color: #6180e8;
 `;
 const GroupNum = styled.TouchableOpacity`
-  width: 45%;
+  width: 50%;
   height: 50px;
   border-radius: 9px;
   margin-left: 50px;
