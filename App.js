@@ -3,6 +3,7 @@ import Start from "./view-components/startScreenView";
 import BottomNavigator from "./navigation-components/bottomNavigator";
 import { loadSchedule } from "./utils/dataLoader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { translit } from "./utils/transliter";
 
 export const ScheduleContext = React.createContext({
   isLoadingSchedule: true,
@@ -37,9 +38,10 @@ const App = () => {
 
   const setGroup = async (group) => {
     try {
-      await AsyncStorage.setItem("group", group.toString());
+      const transliteratedGroup = translit.translit(group.toString().toLocaleLowerCase(), 1);
+      await AsyncStorage.setItem("group", transliteratedGroup);
       await AsyncStorage.setItem("showApp", true);
-      loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, group);
+      loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, transliteratedGroup);
       setCurrentDate(new Date());
       setShowRealApp(true);
     } catch (e) {
@@ -61,7 +63,7 @@ const App = () => {
         weekName,
         weekNumber
       }}><BottomNavigator /></ScheduleContext.Provider> :
-    <Start chooseGroupEvent={(group) => setGroup(group)} isCorrectGroup={isCorrectGroup}/>;
+    <Start chooseGroupEvent={(group) => setGroup(group)} isCorrectGroup={isCorrectGroup} />;
 };
 
 export default App;
