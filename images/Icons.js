@@ -191,7 +191,7 @@ export function Check(props){
       <Path
         data-name="Icon awesome-check"
         d="M12.227 26.323l-11.7-11.7a1.8 1.8 0 010-2.546l2.546-2.554a1.8 1.8 0 012.546 0l7.881 7.886L30.382.523a1.8 1.8 0 012.546 0l2.545 2.55a1.8 1.8 0 010 2.546l-20.7 20.7a1.8 1.8 0 01-2.546.004z"
-        fill="#FFF"
+        fill={props.disabled ? "#6A6A74" : "#FFF"}
       />
     </Svg>
   )

@@ -25,11 +25,10 @@ export default function startScreenView(props) {
         onChangeText={(text) => setGroupName(text)}
         autoFocus
       />
-      <Forward disabled={!isCorrectGroupName} onPress={() => props.chooseGroupEvent(text)}><Check /></Forward>
+      <Forward disabled={!isCorrectGroupName} onPress={() => props.chooseGroupEvent(text)}><Check disabled={!isCorrectGroupName}/></Forward>
       <Problembutton>
         <Problem onPress={() => props.chooseGroupEvent()}>
           Возникла проблема?
-          {text} {isCorrectGroupName.toString()}
         </Problem>
       </Problembutton>
     </Container>
@@ -68,7 +67,7 @@ const Forward = styled.TouchableOpacity`
   margin-top: 30px;
   height: 52px;
   width: 124px;
-  ${props => props.disabled ? css`background: #1B1B21` : css`background: #6180E8`}
+  ${props => props.disabled ? css`background: #35353F` : css`background: #6180E8`}
 `;
 const Problembutton = styled.TouchableOpacity`
   position: absolute;
