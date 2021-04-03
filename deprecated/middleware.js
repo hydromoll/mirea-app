@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
-import Schedule from "./images/schedule";
-import Start from "./screens/Start";
-import Stgs from "./screens/Stgs";
-import Sec from "./screens/daySchedule";
-import Srch from "./screens/Searchprof";
-import Settings from "./screens/Settings";
+import Schedule from "../images/schedule";
+import Start from "../screens/Start";
+import Stgs from "../view-components/settings";
+import Sec from "../logic-components/daySchedule";
+import Srch from "./Searchprof";
+import Settings from "./Settings";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";

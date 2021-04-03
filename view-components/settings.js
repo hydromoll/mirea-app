@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, Text } from "react-native";
 import styled from "styled-components/native";
 
-export default function App({ navigation }) {
+export default function App() {
   return (
     <SafeAreaView>
       <Container>
