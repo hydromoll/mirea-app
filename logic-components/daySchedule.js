@@ -1,19 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Text } from "react-native";
+import React, { useContext, useEffect } from "react";
+import { ActivityIndicator, FlatList } from "react-native";
 import styled from "styled-components/native";
-import { loadSchedule } from "../utils/dataLoader";
+import { getDaySchedule } from "../utils/dataLoader";
+import { ScheduleContext } from "../App";
 import PairCard from "../view-components/pairCard";
 
 export default function daySchedule(props) {
-  const [isLoading, setLoading] = useState(true);
-  const [schedule, setSchedule] = useState([]);
-  useEffect(() => {
-    loadSchedule(setSchedule, setLoading, +props.route.name);
-  }, []);
+
+  const schedule = useContext(ScheduleContext);
+
   return (
     <Container>
-      {isLoading ? (
+      {schedule.isLoadingSchedule ? (
         <ActivityIndicator />
       ) : (
         <FlatList
@@ -22,7 +20,7 @@ export default function daySchedule(props) {
             height: "100%",
             alignSelf: "stretch"
           }}
-          data={schedule}
+          data={getDaySchedule(schedule.schedule, +props.route.name)}
           renderItem={({ item }) => {
             let renderPairs = [];
             for (let key of Object.keys(item.info)) {
@@ -40,7 +38,6 @@ export default function daySchedule(props) {
           }}
         />
       )}
-      <StatusBar style="auto" />
     </Container>
   );
 }

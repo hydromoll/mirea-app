@@ -1,8 +1,8 @@
 import convertScheduleData from "./daysAdapter";
 
-function getDaySchedule(weekSchedule, routeNumber) {
+export function getDaySchedule(weekSchedule, dayNumber) {
   return weekSchedule
-    .slice(routeNumber * 6, 6 + 6 * routeNumber)
+    .slice(dayNumber * 6, 6 + 6 * dayNumber)
     .sort((pairs, newPairs) => pairs.number - newPairs.number)
     .map((pair, index) => {
       pair.key = index.toString();
@@ -10,11 +10,19 @@ function getDaySchedule(weekSchedule, routeNumber) {
     });
 }
 
-export function loadSchedule(callbackSchedule, callbackLoading, routeNumber) {
-  fetch("http://api.mirea-assistant.ru/schedule?group=ivbo-08-19")
+export function loadSchedule(callbackSchedule, callbackLoading, groupName) {
+  fetch(`http://api.mirea-assistant.ru/schedule?group=${groupName}`)
     .then(scheduleRes => scheduleRes.json().then((schedule) => {
-      callbackSchedule(getDaySchedule(convertScheduleData(schedule), routeNumber));
+      callbackSchedule(convertScheduleData(schedule));
     }))
+    .catch((error) => console.error(error))
+    .finally(() => callbackLoading(false));
+}
+
+export function loadGroups(callbackGroup, callbackLoading) {
+  fetch("http://api.mirea-assistant.ru").then(groupsRes => groupsRes.json().then((groups) => {
+    callbackGroup(groups);
+  }))
     .catch((error) => console.error(error))
     .finally(() => callbackLoading(false));
 }

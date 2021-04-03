@@ -1,5 +1,5 @@
 import Schedule from "../images/Scheduleicon";
-import Stgs from "../view-components/settingsView";
+import SettingsView from "../view-components/settingsView";
 import Menu from "../images/menuicon";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -32,7 +32,7 @@ const bottomNavigator = () => (
       />
       <BottomTabNavigator.Screen
         name="Settings"
-        component={Stgs}
+        component={SettingsView}
         options={{
           tabBarIcon: ({ focused }) => <Menu focused={focused} />,
         }}

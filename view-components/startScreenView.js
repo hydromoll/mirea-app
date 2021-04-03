@@ -1,16 +1,21 @@
 import React from "react";
 import styled from "styled-components/native";
+import { Check } from "../images/Icons";
+import { useState } from "react";
 
 export default function startScreenView(props) {
+  const [text, setText] = useState();
   return (
     <Container>
       <Hi>Привет!</Hi>
+      <Choose>Укажи свою группу</Choose>
       <GroupField
         onPress={() => props.chooseGroupEvent()}
-        placeholder="Введите группу"
+        placeholder="XXXX-00-00"
         placeholderTextColor="white"
+        onChangeText={(text) => setText(text)}
       />
-      <Forward />
+      <Forward onPress={() => props.chooseGroupEvent(text)}><Check /></Forward>
       <Problembutton>
         <Problem onPress={() => props.chooseGroupEvent()}>
           Возникла проблема?
@@ -29,20 +34,37 @@ const Container = styled.View`
 `;
 const Hi = styled.Text`
   color: white;
-  font-size: 28px;
+  font-size: 42px;`;
+const Choose = styled.Text`
+  margin-top: 15px;
+  font-size: 20px;
+  color: white;
 `;
 const GroupField = styled.TextInput`
-  margin-top: 5%;
-  color: coral;
+  margin-top: 30px;
+  color: white;
   background-color: #1f2025;
   padding: 12px;
-  width: 200px;
-  height: 40px;
-  border-radius: 5px;
+  width: 250px;
+  height: 52px;
+  border-radius: 7px;
+  text-align: center;
 `;
-const Forward = styled.TouchableOpacity``;
-const Problembutton = styled.TouchableOpacity``;
+const Forward = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center
+  border-radius: 7px;
+  margin-top: 30px;
+  height: 52px;
+  width: 124px;
+  background-color: #6180E8;
+`;
+const Problembutton = styled.TouchableOpacity`
+  position: absolute;
+  bottom: 30px;
+
+`;
 const Problem = styled.Text`
   font-size: 18px;
-  color: blue;
+  color: #6180E8;
 `;

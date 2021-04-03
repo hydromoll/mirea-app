@@ -4,36 +4,29 @@ import styled from "styled-components/native";
 
 export default function settingsView() {
   return (
-    <SafeAreaView>
-      <Container>
-        <Cont>
-          <GroupContainer>
-            <Urgrp>Ваша группа</Urgrp>
-            <GroupNum>
-              <Text style={{ color: "white", fontSize: 20 }}> ИВБО-13-19 </Text>
-            </GroupNum>
-          </GroupContainer>
-          <Title>MIREA Assiatant 1.0</Title>
-          <Developers>by hydromoll and misha98857</Developers>
-        </Cont>
+    <Container>
+      <SafeAreaView>
+        <GroupContainer>
+          <Urgrp>Ваша группа</Urgrp>
+          <GroupNum>
+            <Text style={{ color: "white", fontSize: 20 }}> ИВБО-13-19 </Text>
+          </GroupNum>
+        </GroupContainer>
+        <Title>MIREA Assiatant 1.0</Title>
+        <Developers>by hydromoll and misha98857</Developers>
         <Problem>Возникла проблема?</Problem>
-      </Container>
-    </SafeAreaView>
+      </SafeAreaView>
+    </Container>
   );
 }
 const Container = styled.View`
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: #141519;
 `;
 
-const Cont = styled.View`
-  margin-top: 25%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 const Title = styled.Text`
   color: white;
 `;
