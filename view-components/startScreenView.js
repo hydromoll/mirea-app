@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Check } from "../images/Icons";
+import { css } from "styled-components";
 
 export default function startScreenView(props) {
-  const [text, setText] = useState();
+  const [text, setText] = useState('');
   const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
 
   const setGroupName = (groupName) => {
-    setText(groupName);
     const re = /^([а-яА-Я\w]{4}-\d{2}-\d{2})$/g;
     const isGroupCorrect = re.test(groupName);
+    setText(groupName);
     setIsCorrectGroupName(isGroupCorrect);
   };
 
@@ -22,11 +23,13 @@ export default function startScreenView(props) {
         placeholder="XXXX-00-00"
         placeholderTextColor="white"
         onChangeText={(text) => setGroupName(text)}
+        autoFocus
       />
-      <Forward style={{visibility: isCorrectGroupName ? "visible" : "hidden"}} onPress={() => props.chooseGroupEvent(text)}><Check /></Forward>
+      <Forward disabled={!isCorrectGroupName} onPress={() => props.chooseGroupEvent(text)}><Check /></Forward>
       <Problembutton>
         <Problem onPress={() => props.chooseGroupEvent()}>
           Возникла проблема?
+          {text} {isCorrectGroupName.toString()}
         </Problem>
       </Problembutton>
     </Container>
@@ -65,7 +68,7 @@ const Forward = styled.TouchableOpacity`
   margin-top: 30px;
   height: 52px;
   width: 124px;
-  background-color: #6180E8;
+  ${props => props.disabled ? css`background: #1B1B21` : css`background: #6180E8`}
 `;
 const Problembutton = styled.TouchableOpacity`
   position: absolute;

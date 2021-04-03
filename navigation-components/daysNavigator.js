@@ -13,7 +13,7 @@ const dayTabStyles = {
   style: {
     backgroundColor: "#1f2025"
   }
-}
+};
 
 const DaysNavigator = (props) => {
 
@@ -45,13 +45,12 @@ const DaysNavigator = (props) => {
   ];
 
   const schedule = useContext(ScheduleContext);
-  const initialDay = (schedule.currentDate.getDay() - 1).toString();
-  
+
 
   return (
     <NavigationContainer independent={true}>
       <DaysTopBarNavigator.Navigator
-        initialRouteName={initialDay}
+        initialRouteName={schedule.initialDay}
         tabBarOptions={dayTabStyles}
       >
         {days.map(({ daySortName, dayFullName }, index) => (
