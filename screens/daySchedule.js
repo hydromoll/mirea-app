@@ -1,15 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import convertScheduleData from "../utils/daysAdapter.js";
-import {
-  StyleSheet,
-  ActivityIndicator,
-  Text,
-  View,
-  SafeAreaView,
-  FlatList,
-} from "react-native";
-import styled, { withTheme } from "styled-components";
+import { ActivityIndicator, FlatList, Text } from "react-native";
+import styled from "styled-components/native";
 
 export default function Main(props) {
   const [isLoading, setLoading] = useState(true);

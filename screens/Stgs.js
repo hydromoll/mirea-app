@@ -1,9 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import styled from "styled-components";
-import Back from "../images/Back";
-import LogoImage from "../images/panda.png";
+import { SafeAreaView, Text } from "react-native";
+import styled from "styled-components/native";
+
 export default function App({ navigation }) {
   return (
     <SafeAreaView>

@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import styled from "styled-components";
+import styled from "styled-components/native";
+
 export default function Main(props) {
   return (
     <Container>

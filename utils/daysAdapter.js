@@ -7,7 +7,7 @@ const formatePairData = (pair, type) => {
   };
 };
 
-export default convertScheduleData = (data) => {
+const convertScheduleData = (data) => {
   const { schedule } = data;
   let convertedData = [];
   schedule.forEach((globalPair) => {
@@ -45,6 +45,8 @@ export default convertScheduleData = (data) => {
 
   return convertedData;
 };
+
+export default convertScheduleData;
 
 // week is odd, even, number "3,7" and "3"
 

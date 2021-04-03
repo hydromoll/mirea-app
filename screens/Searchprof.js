@@ -1,6 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import Srchicn from "../images/Searchicn";
+
 export default function App({ navigation }) {
   return (
     <Container>
@@ -27,7 +28,7 @@ const Container = styled.View`
 `;
 const TopBar = styled.View`
   height: 161px;
-  margin-top: 0px;
+  margin-top: 0;
   width: 100%;
   align-items: center;
   justify-content: center;

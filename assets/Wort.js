@@ -1,6 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import StartTime from "./StartTime";
+
 export default function Wort() {
   return (
     <Container>
@@ -32,5 +33,5 @@ const Name = styled.Text`
   width: 100%;
   flex-direction: row;
   color: #fff;
-  font-size: 20;
+  font-size: 20px;
 `;

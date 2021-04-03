@@ -1,19 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View, Linking } from "react-native";
-import styled from "styled-components";
+import { Linking, Text, View } from "react-native";
+import styled from "styled-components/native";
 import Sicn from "../images/Settingsicn";
-import BottomSheet from "reanimated-bottom-sheet";
-import {
-  User,
-  Vk,
-  Tg,
-  Contact,
-  Location,
-  Rasp,
-  Grad,
-  Mail,
-} from "../images/Icons";
+import { Contact, Mail, Tg, Vk } from "../images/Icons";
+
 export default function App({ navigation }) {
   const sheetRef = React.useRef(0);
   const buttonList = [
@@ -89,12 +80,12 @@ export default function App({ navigation }) {
     <React.Fragment>
       <Container>
         <StatusBar style="auto" />
-        <BottomSheet
-          ref={sheetRef}
-          snapPoints={[250, 100, 0]}
-          borderRadius={16}
-          renderContent={renderContent}
-        />
+        {/*<BottomSheet*/}
+        {/*  ref={sheetRef}*/}
+        {/*  snapPoints={[250, 100, 0]}*/}
+        {/*  borderRadius={16}*/}
+        {/*  renderContent={renderContent}*/}
+        {/*/>*/}
 
         {buttonList.map(({ title, icon, navigation }, index) => (
           <Search onPress={navigation} key={index}>

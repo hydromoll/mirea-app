@@ -1,7 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, Linking } from "react-native";
-import styled, { withTheme } from "styled-components";
+import styled from "styled-components/native";
 import Schedule from "./images/schedule";
 import Start from "./screens/Start";
 import Stgs from "./screens/Stgs";
