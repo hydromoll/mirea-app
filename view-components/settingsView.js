@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, Text } from "react-native";
 import styled from "styled-components/native";
 
-export default function App() {
+export default function settingsView() {
   return (
     <SafeAreaView>
       <Container>

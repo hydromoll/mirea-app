@@ -1,18 +1,16 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import styled from "styled-components/native";
 
-export default function Main(props) {
+export default function startScreenView(props) {
   return (
     <Container>
-      <StatusBar style="auto" />
       <Hi>Привет!</Hi>
       <GroupField
         onPress={() => props.chooseGroupEvent()}
         placeholder="Введите группу"
         placeholderTextColor="white"
-      ></GroupField>
-      <Forward></Forward>
+      />
+      <Forward />
       <Problembutton>
         <Problem onPress={() => props.chooseGroupEvent()}>
           Возникла проблема?

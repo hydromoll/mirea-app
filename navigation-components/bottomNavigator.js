@@ -1,5 +1,5 @@
 import Schedule from "../images/Scheduleicon";
-import Stgs from "../view-components/settings";
+import Stgs from "../view-components/settingsView";
 import Menu from "../images/menuicon";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";

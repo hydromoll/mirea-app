@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Text } from "react-native";
 import styled from "styled-components/native";
 import { loadSchedule } from "../utils/dataLoader";
-import ScheduleCard from "../view-components/scheduleCard";
+import PairCard from "../view-components/pairCard";
 
 export default function daySchedule(props) {
   const [isLoading, setLoading] = useState(true);
@@ -31,7 +31,7 @@ export default function daySchedule(props) {
               if (key === "8" || key === "even") {
                 const { name, professor, type, room } = item.info[key];
                 renderPairs.push(
-                  <ScheduleCard key={key} item={item} name={name} professor={professor} type={type} room={room} />
+                  <PairCard key={key} item={item} name={name} professor={professor} type={type} room={room} />
                 );
                 break;
               }

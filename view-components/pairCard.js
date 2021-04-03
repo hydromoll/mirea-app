@@ -2,7 +2,7 @@ import { Text } from "react-native";
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import React from "react";
 
-const ScheduleCard = (props) => (
+const PairCard = (props) => (
   <Card key={props.item.key}>
     <Time>
       <Starttime>{`${props.item.startTime}`}</Starttime>
@@ -67,4 +67,4 @@ const Rooom = styled.Text`
   padding: 5px 10px;
 `;
 
-export default ScheduleCard;
+export default PairCard;
