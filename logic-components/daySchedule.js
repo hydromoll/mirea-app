@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ActivityIndicator, FlatList } from "react-native";
 import styled from "styled-components/native";
 import { getDaySchedule } from "../utils/dataLoader";

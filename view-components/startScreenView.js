@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Check } from "../images/Icons";
-import { useState } from "react";
 
 export default function startScreenView(props) {
   const [text, setText] = useState();

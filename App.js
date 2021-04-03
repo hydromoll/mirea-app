@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Start from "./view-components/startScreenView";
 import BottomNavigator from "./navigation-components/bottomNavigator";
-import { loadGroups, loadSchedule } from "./utils/dataLoader";
+import { loadSchedule } from "./utils/dataLoader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const ScheduleContext = React.createContext({ isLoadingSchedule: true, schedule: [] });
@@ -26,7 +26,7 @@ const App = () => {
 
   const setGroup = async (group) => {
     try {
-      await AsyncStorage.setItem("group", group);
+      await AsyncStorage.setItem("group", group.toString());
       await AsyncStorage.setItem("showApp", true);
       loadSchedule(setSchedule, setLoadingSchedule, group);
       setShowRealApp(true);
