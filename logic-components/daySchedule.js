@@ -24,9 +24,7 @@ export default function daySchedule(props) {
           renderItem={({ item }) => {
             let renderPairs = [];
             for (let key of Object.keys(item.info)) {
-              // TODO calculate weekType and current week
-              // TODO need past week from api usage getWeekNamer method calculate odd or even and get week number
-              if (key === "8" || key === "even") {
+              if (key === schedule.weekNumber || key === schedule.weekName) {
                 const { name, professor, type, room } = item.info[key];
                 renderPairs.push(
                   <PairCard key={key} item={item} name={name} professor={professor} type={type} room={room} />

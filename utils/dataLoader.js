@@ -1,4 +1,5 @@
 import convertScheduleData from "./daysAdapter";
+import getWeekNumber from "./calculateWeek";
 
 export function getDaySchedule(weekSchedule, dayNumber) {
   return weekSchedule
@@ -10,10 +11,15 @@ export function getDaySchedule(weekSchedule, dayNumber) {
     });
 }
 
-export function loadSchedule(callbackSchedule, callbackLoading, groupName) {
+export function loadSchedule(callbackSchedule, callbackLoading, setStartSemesterDate, setWeekNumber, setWeekName, groupName) {
   fetch(`http://api.mirea-assistant.ru/schedule?group=${groupName}`)
     .then(scheduleRes => scheduleRes.json().then((schedule) => {
       callbackSchedule(convertScheduleData(schedule));
+      const semesterStartDate = schedule.semester.startDate;
+      const currentWeekNumber = getWeekNumber(semesterStartDate, new Date());
+      setWeekNumber(currentWeekNumber);
+      setWeekName(currentWeekNumber % 2 ? "odd" : "even");
+      setStartSemesterDate(semesterStartDate);
     }))
     .catch((error) => console.error(error))
     .finally(() => callbackLoading(false));

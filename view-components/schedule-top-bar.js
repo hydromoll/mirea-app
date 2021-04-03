@@ -1,18 +1,24 @@
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import { SafeAreaView } from "react-native";
 import getWeekNumber from "../utils/calculateWeek";
-import React from "react";
+import React, { useContext } from "react";
+import { ScheduleContext } from "../App";
 
-const ScheduleTopBar = (props) => (
-  <SafeAreaView>
-      <TopBar>
-        <DayName>{props.day}</DayName>
-        <WeekNumberView>
-          <WeekNumber>{`Неделя ${getWeekNumber(props.startDate, props.currentDate)}`}</WeekNumber>
-        </WeekNumberView>
-      </TopBar>
-  </SafeAreaView>
-);
+
+
+const ScheduleTopBar = (props) => {
+  
+  const schedule = useContext(ScheduleContext);
+
+  return (<SafeAreaView>
+    <TopBar>
+      <DayName>{props.day}</DayName>
+      <WeekNumberView>
+        <WeekNumber>{`Неделя ${schedule.weekNumber}`}</WeekNumber>
+      </WeekNumberView>
+    </TopBar>
+  </SafeAreaView>);
+};
 
 export default ScheduleTopBar;
 

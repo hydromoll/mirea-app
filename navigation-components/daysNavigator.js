@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import daySchedule from "../logic-components/daySchedule";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import React from "react";
+import React, { useContext } from "react";
+import { ScheduleContext } from "../App";
 
 const DaysTopBarNavigator = createMaterialTopTabNavigator();
 
@@ -42,7 +43,10 @@ const DaysNavigator = (props) => {
       daySortName: "Сб"
     }
   ];
-  const initialDay = (props.currentDate.getDay() - 1).toString();
+
+  const schedule = useContext(ScheduleContext);
+  const initialDay = (schedule.currentDate.getDay() - 1).toString();
+  
 
   return (
     <NavigationContainer independent={true}>
