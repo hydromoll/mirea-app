@@ -4,26 +4,23 @@ import getWeekNumber from "../utils/calculateWeek";
 import React, { useContext } from "react";
 import { ScheduleContext } from "../App";
 
-
-
 const ScheduleTopBar = (props) => {
-  
   const schedule = useContext(ScheduleContext);
 
-  return (<SafeAreaView>
+  return (
     <TopBar>
       <DayName>{props.day}</DayName>
       <WeekNumberView>
         <WeekNumber>{`Неделя ${schedule.weekNumber}`}</WeekNumber>
       </WeekNumberView>
     </TopBar>
-  </SafeAreaView>);
+  );
 };
 
 export default ScheduleTopBar;
 
 const TopBar = styled.View`
-  height: 110px;
+  height: 120px;
   width: 100%;
   background-color: #1f2025;
   display: flex;
@@ -35,12 +32,12 @@ const TopBar = styled.View`
 const DayName = styled.Text`
   font-size: 25px;
   color: #fff;
-  margin: 20px 0 0 20px;
+  margin: 35px 0 0 20px;
 `;
 const WeekNumberView = styled.View`
   width: 80px;
   height: 40px;
-  margin: 20px 20px 0 0;
+  margin: 35px 20px 0 0;
   border-radius: 8px;
   background-color: #3f4662;
   display: flex;

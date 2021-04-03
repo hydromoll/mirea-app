@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 import styled from "styled-components/native";
+import normalize from "../utils/normalizeFontSize";
 
 export default function settingsView() {
   return (
@@ -31,7 +32,7 @@ const TopBar = styled.View`
   justify-content: center;
   height: 45%;
   width: 100%;
-  background-color: #1F2025;
+  background-color: #1f2025;
   border-bottom-left-radius: 22px;
   border-bottom-right-radius: 22px;
 `;
@@ -40,7 +41,7 @@ const Logo = styled.Image`
   width: 120px;
 `;
 const Title = styled.Text`
-  margin-top:8%;
+  margin-top: 8%;
   color: white;
   font-size: 20px;
 `;
@@ -79,7 +80,4 @@ const GroupNum = styled.TouchableOpacity`
   background-color: #35353f;
   align-items: center;
   justify-content: center;
-`;
-const BarItems = styled.View`
-  flex-direction: row;
 `;

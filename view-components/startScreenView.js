@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Check } from "../images/Icons";
-
+import normalize from "../utils/normalizeFontSize";
 export default function startScreenView(props) {
   const [text, setText] = useState();
   const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
@@ -23,7 +23,12 @@ export default function startScreenView(props) {
         placeholderTextColor="white"
         onChangeText={(text) => setGroupName(text)}
       />
-      <Forward style={{visibility: isCorrectGroupName ? "visible" : "hidden"}} onPress={() => props.chooseGroupEvent(text)}><Check /></Forward>
+      <Forward
+        style={{ visibility: isCorrectGroupName ? "visible" : "hidden" }}
+        onPress={() => props.chooseGroupEvent(text)}
+      >
+        <Check />
+      </Forward>
       <Problembutton>
         <Problem onPress={() => props.chooseGroupEvent()}>
           Возникла проблема?
@@ -42,10 +47,11 @@ const Container = styled.View`
 `;
 const Hi = styled.Text`
   color: white;
-  font-size: 42px;`;
+  font-size: ${normalize(42)};
+`;
 const Choose = styled.Text`
   margin-top: 15px;
-  font-size: 20px;
+  font-size: ${normalize(15)};
   color: white;
 `;
 const GroupField = styled.TextInput`
@@ -65,14 +71,13 @@ const Forward = styled.TouchableOpacity`
   margin-top: 30px;
   height: 52px;
   width: 124px;
-  background-color: #6180E8;
+  background-color: #6180e8;
 `;
 const Problembutton = styled.TouchableOpacity`
   position: absolute;
   bottom: 30px;
-
 `;
 const Problem = styled.Text`
   font-size: 18px;
-  color: #6180E8;
+  color: #6180e8;
 `;

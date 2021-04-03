@@ -7,19 +7,15 @@ const PairCard = (props) => (
   <Card key={props.item.key}>
     <Time>
       <Starttime>{`${props.item.startTime}`}</Starttime>
-      <Endtime
-        style={{ marginTop: 10 }}
-      >{`${props.item.endTime}`}</Endtime>
+      <Endtime style={{ marginTop: 10 }}>{`${props.item.endTime}`}</Endtime>
     </Time>
     <Title>
       <Name>{`${props.name + (props.name && ",") || "—"} ${props.type}`}</Name>
-      <Text style={{ color: "gray" }}>{`${
-        props.professor || "—"
-      }`}</Text>
+      <Text style={{ color: "gray" }}>{`${props.professor || "—"}`}</Text>
     </Title>
     <Rooom
       style={{
-        color: "white"
+        color: "white",
       }}
     >{`${props.room || "—"}`}</Rooom>
   </Card>
@@ -38,35 +34,34 @@ const Card = styled.View`
   flex-direction: row;
 `;
 const Time = styled.View`
-  width: 15%;
+  width: 13%;
   margin-top: 15px;
 `;
 
 const Starttime = styled.Text`
   color: #929395;
-  font-size: 16px;
+  font-size: ${normalize(12)};
 `;
 const Endtime = styled.Text`
   color: #929395;
-  font-size: 16px;
+  font-size: ${normalize(12)};
 `;
 
 const Name = styled.Text`
-  font-size: ${normalize(16)};
+  font-size: ${normalize(12)};
   color: white;
 `;
 const Title = styled.View`
-  padding-top: 2%;
-  padding-left: 5%;
-  width: 65%;
+  padding-top: 5%;
+  padding-left: 2%;
+  width: 55%;
 `;
 const Rooom = styled.Text`
-  width: 20%;
+  width: 25%;
   text-align: center;
   background-color: #4b4f5b;
-  font-size: ${normalize(14)};
-  border-radius: 5px;
-  padding: 5px 10px;
+  font-size: ${normalize(13)};
+  padding: 7px 10px;
 `;
 
 export default PairCard;
