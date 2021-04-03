@@ -20,6 +20,8 @@ export default function daySchedule(props) {
             height: "100%",
             alignSelf: "stretch"
           }}
+          showsVerticalScrollIndicator ={false}
+          showsHorizontalScrollIndicator={false}
           data={getDaySchedule(schedule.schedule, +props.route.name)}
           renderItem={({ item }) => {
             let renderPairs = [];
