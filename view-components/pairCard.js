@@ -1,6 +1,7 @@
 import { Text } from "react-native";
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import React from "react";
+import normalize from "../utils/normalizeFontSize";
 
 const PairCard = (props) => (
   <Card key={props.item.key}>
@@ -51,7 +52,7 @@ const Endtime = styled.Text`
 `;
 
 const Name = styled.Text`
-  font-size: 18px;
+  font-size: ${normalize(16)};
   color: white;
 `;
 const Title = styled.View`
@@ -63,6 +64,7 @@ const Rooom = styled.Text`
   width: 20%;
   text-align: center;
   background-color: #4b4f5b;
+  font-size: ${normalize(14)};
   border-radius: 5px;
   padding: 5px 10px;
 `;

@@ -15,20 +15,20 @@ export const ScheduleContext = React.createContext({
 
 const App = () => {
   const [showRealApp, setShowRealApp] = useState(false);
-  // const [groups, setGroups] = useState([]);
-  // const [isLoadingGroups, setLoadingGroups] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [isLoadingSchedule, setLoadingSchedule] = useState(true);
   const [schedule, setSchedule] = useState([]);
   const [weekNumber, setWeekNumber] = useState("0");
   const [weekName, setWeekName] = useState("odd");
-  const currentDate = new Date();
+  const [isCorrectGroup, setCorrectGroup] = useState(false);
 
   const getGroupFromStorage = async () => {
     try {
       const group = await AsyncStorage.getItem("group");
       if (group !== null) {
         loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, group);
+        setCurrentDate(new Date());
         setShowRealApp(true);
       }
     } catch (e) {
@@ -40,6 +40,7 @@ const App = () => {
       await AsyncStorage.setItem("group", group.toString());
       await AsyncStorage.setItem("showApp", true);
       loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, group);
+      setCurrentDate(new Date());
       setShowRealApp(true);
     } catch (e) {
     }
@@ -60,7 +61,7 @@ const App = () => {
         weekName,
         weekNumber
       }}><BottomNavigator /></ScheduleContext.Provider> :
-    <Start chooseGroupEvent={(group) => setGroup(group)} />;
+    <Start chooseGroupEvent={(group) => setGroup(group)} isCorrectGroup={isCorrectGroup}/>;
 };
 
 export default App;

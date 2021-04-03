@@ -4,6 +4,15 @@ import { Check } from "../images/Icons";
 
 export default function startScreenView(props) {
   const [text, setText] = useState();
+  const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
+
+  const setGroupName = (groupName) => {
+    setText(groupName);
+    const re = /^([а-яА-Я\w]{4}-\d{2}-\d{2})$/g;
+    const isGroupCorrect = re.test(groupName);
+    setIsCorrectGroupName(isGroupCorrect);
+  };
+
   return (
     <Container>
       <Hi>Привет!</Hi>
@@ -12,9 +21,9 @@ export default function startScreenView(props) {
         onPress={() => props.chooseGroupEvent()}
         placeholder="XXXX-00-00"
         placeholderTextColor="white"
-        onChangeText={(text) => setText(text)}
+        onChangeText={(text) => setGroupName(text)}
       />
-      <Forward onPress={() => props.chooseGroupEvent(text)}><Check /></Forward>
+      <Forward style={{visibility: isCorrectGroupName ? "visible" : "hidden"}} onPress={() => props.chooseGroupEvent(text)}><Check /></Forward>
       <Problembutton>
         <Problem onPress={() => props.chooseGroupEvent()}>
           Возникла проблема?
@@ -51,7 +60,7 @@ const GroupField = styled.TextInput`
 `;
 const Forward = styled.TouchableOpacity`
   align-items: center;
-  justify-content: center
+  justify-content: center;
   border-radius: 7px;
   margin-top: 30px;
   height: 52px;
