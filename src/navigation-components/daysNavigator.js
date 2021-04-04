@@ -2,14 +2,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import daySchedule from "../logic-components/daySchedule";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import React, { useContext } from "react";
-import { ScheduleContext } from "../../App";
+import AppContext from "../utils/context";
 
 const DaysTopBarNavigator = createMaterialTopTabNavigator();
 
 const dayTabStyles = {
   activeTintColor: "#497dcd",
   inactiveTintColor: "gray",
-  labelStyle: { fontSize: 23 },
+  labelStyle: { fontSize: 16 },
   style: {
     backgroundColor: "#1f2025"
   }
@@ -44,8 +44,7 @@ const DaysNavigator = (props) => {
     }
   ];
 
-  const schedule = useContext(ScheduleContext);
-
+  const schedule = useContext(AppContext);
 
   return (
     <NavigationContainer independent={true}>

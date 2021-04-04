@@ -12,10 +12,11 @@ const ModalView = () => {
         animationType="slide"
         transparent={true}
         isVisible={modalVisible}
+        onBackdropPress={()=>{setModalVisible(false)}}
       >
         <Background>
           <YourGroup>Ваша группа:</YourGroup>
-          <InputGroupView callback={() => setModalVisible(false)}/>
+          <InputGroupView />
         </Background>
       </Modal>
     </Container>
@@ -26,7 +27,7 @@ const Container = styled.View`
 
 const Background = styled.View`
   margin: 20px;
-  background-color: #000;
+  background-color: #141519;
   border-radius: 20px;
   padding: 35px;
   align-items: center;
@@ -34,16 +35,6 @@ const Background = styled.View`
 const YourGroup = styled.Text`
   font-size: ${normalize(14)};
   color: white;
-`;
-const GroupField = styled.TextInput`
-  margin-top: 30px;
-  color: white;
-  background-color: #1f2025;
-  padding: 12px;
-  width: 250px;
-  height: 52px;
-  border-radius: 7px;
-  text-align: center;
 `;
 const Button = styled.TouchableOpacity`
   align-items: center;
@@ -53,5 +44,10 @@ const Button = styled.TouchableOpacity`
   height: 52px;
   width: 124px;
   background-color: #6180e8;
+`;
+const Close = styled.TouchableOpacity`
+  height: 100%;
+  width: 100%;
+  background-color: #FFF;
 `;
 export default ModalView;

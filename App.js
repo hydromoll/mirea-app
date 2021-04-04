@@ -4,18 +4,7 @@ import BottomNavigator from "./src/navigation-components/bottomNavigator";
 import { loadSchedule } from "./src/utils/dataLoader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { translit } from "./src/utils/transliter";
-
-export const ScheduleContext = React.createContext({
-  isLoadingSchedule: true,
-  schedule: [],
-  weekNumber: "0",
-  weekName: "odd",
-  startDate: new Date(),
-  currentDate: new Date(),
-  initialDay: 0,
-  chooseGroupEvent: () => {
-  }
-});
+import AppContext from "./src/utils/context";
 
 const App = () => {
   const [showRealApp, setShowRealApp] = useState(false);
@@ -47,8 +36,6 @@ const App = () => {
       } else {
         transliteratedGroup = lowerCaseGroup;
       }
-
-
       await AsyncStorage.setItem("group", transliteratedGroup);
       await AsyncStorage.setItem("showApp", "true");
       loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, transliteratedGroup);
@@ -64,19 +51,21 @@ const App = () => {
   }, []);
 
   return (
-    <ScheduleContext.Provider
-      value={{
-        isLoadingSchedule,
-        schedule,
-        startDate,
-        currentDate,
-        weekName,
-        weekNumber,
-        initialDay: (currentDate.getDay() - 1).toString(),
-        chooseGroupEvent: (group) => setGroup(group)
-      }}>
-      {showRealApp ? <BottomNavigator /> : <Start />}
-    </ScheduleContext.Provider>
+    <>
+      <AppContext.Provider
+        value={{
+          isLoadingSchedule,
+          schedule,
+          startDate,
+          currentDate,
+          weekName,
+          weekNumber,
+          initialDay: (currentDate.getDay() - 1).toString(),
+          chooseGroupEvent: (group) => setGroup(group)
+        }}>
+        {showRealApp ? <BottomNavigator /> : <Start />}
+      </AppContext.Provider>
+    </>
   );
 };
 

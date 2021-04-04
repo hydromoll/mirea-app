@@ -1,19 +1,18 @@
 import * as React from "react";
 import Svg, { G, Rect } from "react-native-svg";
 
-function SvgComponent(props) {
+function SvgComponent({ focused }) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
       width={23}
       height={16}
       viewBox="0 0 23 16"
-      {...props}
     >
       <G
         data-name="Group 4"
         transform="translate(-317 -853)"
-        fill={props.focused ? "#497dcd" : "#4b4f5b"}
+        fill={focused ? "#497dcd" : "#4b4f5b"}
       >
         <Rect
           data-name="Rectangle 6"

@@ -4,13 +4,13 @@ import normalize from "../utils/normalizeFontSize";
 import ModalView from "./modalView";
 import logo from "../../assets/images/panda.png";
 import { Dimensions } from "react-native";
-import { ScheduleContext } from "../../App";
+import AppContext from "../utils/context";
 
 
 export default function settingsView() {
 
   const { height } = Dimensions.get("window");
-  const context = useContext(ScheduleContext);
+  const context = useContext(AppContext);
 
 
   return (

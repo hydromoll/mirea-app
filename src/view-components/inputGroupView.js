@@ -2,12 +2,12 @@ import { Check } from "../../assets/images-components/Icons";
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import { css } from "styled-components";
 import React, { useContext, useState } from "react";
-import { ScheduleContext } from "../../App";
+import AppContext from "../utils/context";
 
 const InputGroupView = (props) => {
   const [text, setText] = useState("");
   const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
-  const context = useContext(ScheduleContext);
+  const context = useContext(AppContext);
 
   const setGroupName = (groupName) => {
     const re = /^([а-яА-Я\w]{4}-\d{2}-\d{2})$/g;
@@ -20,7 +20,7 @@ const InputGroupView = (props) => {
     <>
       <GroupField
         placeholder="XXXX-00-00"
-        placeholderTextColor="white"
+        placeholderTextColor="#6A6A74"
         onChangeText={(text) => setGroupName(text)}
         autoFocus
       />

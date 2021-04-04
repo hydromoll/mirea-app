@@ -1,15 +1,14 @@
 import * as React from "react";
 import Svg, { Circle, Path } from "react-native-svg";
 
-function SvgComponent(props) {
+function SvgComponent({ focused }) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      fill={props.focused ? "#497dcd" : "#4b4f5b"}
+      fill={focused ? "#497dcd" : "#4b4f5b"}
       height={25}
       width={25}
-      {...props}
     >
       <Circle cx={386} cy={210} r={20} />
       <Path d="M432 40h-26V20c0-11.046-8.954-20-20-20s-20 8.954-20 20v20h-91V20c0-11.046-8.954-20-20-20s-20 8.954-20 20v20h-90V20c0-11.046-8.954-20-20-20s-20 8.954-20 20v20H80C35.888 40 0 75.888 0 120v312c0 44.112 35.888 80 80 80h153c11.046 0 20-8.954 20-20s-8.954-20-20-20H80c-22.056 0-40-17.944-40-40V120c0-22.056 17.944-40 40-40h25v20c0 11.046 8.954 20 20 20s20-8.954 20-20V80h90v20c0 11.046 8.954 20 20 20s20-8.954 20-20V80h91v20c0 11.046 8.954 20 20 20s20-8.954 20-20V80h26c22.056 0 40 17.944 40 40v114c0 11.046 8.954 20 20 20s20-8.954 20-20V120c0-44.112-35.888-80-80-80z" />
