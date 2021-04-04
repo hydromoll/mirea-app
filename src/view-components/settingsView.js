@@ -5,6 +5,7 @@ import ModalView from "./modalView";
 import logo from "../../assets/images/panda.png";
 import { Dimensions } from "react-native";
 import AppContext from "../utils/context";
+import BottomSheetView from "../utils/bottomsheet";
 
 
 export default function settingsView() {
@@ -22,8 +23,8 @@ export default function settingsView() {
       </TopBar>
       <GroupContainer>
         <Urgrp>Ваша группа</Urgrp>
-        <GroupNum>
-          <Urgrp>ИВБО-10-19</Urgrp>
+        <GroupNum onPress={() => context.setVisibleModalDialog(true)}>
+          <Urgrp>{context.currentGroup}</Urgrp>
         </GroupNum>
       </GroupContainer>
       <Problem>Возникла проблема?</Problem>
@@ -80,7 +81,7 @@ const Problem = styled.Text`
   align-self: center;
   position: absolute;
   font-size: ${normalize(16)};
-  bottom: 25px;
+  bottom: 80px;
   color: #6180e8;
 `;
 const GroupNum = styled.TouchableOpacity`

@@ -14,6 +14,9 @@ const App = () => {
   const [schedule, setSchedule] = useState([]);
   const [weekNumber, setWeekNumber] = useState("0");
   const [weekName, setWeekName] = useState("odd");
+  const [isVisibleBottomSheet, setVisibleBottomSheet] = useState(false);
+  const [isVisibleModalDialog, setVisibleModalDialog] = useState(false);
+  const [currentGroup, setCurrentGroup] = useState("");
 
   const getGroupFromStorage = async () => {
     try {
@@ -21,6 +24,7 @@ const App = () => {
       if (group !== null) {
         loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, group);
         setCurrentDate(new Date());
+        setCurrentGroup(group);
         setShowRealApp(true);
       }
     } catch (e) {
@@ -40,29 +44,36 @@ const App = () => {
       await AsyncStorage.setItem("showApp", "true");
       loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, transliteratedGroup);
       setCurrentDate(new Date());
+      setCurrentGroup(group);
       setShowRealApp(true);
     } catch (e) {
     }
   };
 
-
   useEffect(() => {
     getGroupFromStorage();
   }, []);
 
+  const updatedContextData = {
+    isLoadingSchedule,
+    schedule,
+    startDate,
+    currentDate,
+    weekName,
+    weekNumber,
+    initialDay: (currentDate.getDay() - 1).toString(),
+    setGroup: (group) => setGroup(group),
+    isVisibleBottomSheet,
+    isVisibleModalDialog,
+    setVisibleModalDialog: (isVisible) => setVisibleModalDialog(isVisible),
+    setVisibleBottomSheet: (isVisible) => setVisibleBottomSheet(isVisible),
+    currentGroup
+  };
+
   return (
     <>
       <AppContext.Provider
-        value={{
-          isLoadingSchedule,
-          schedule,
-          startDate,
-          currentDate,
-          weekName,
-          weekNumber,
-          initialDay: (currentDate.getDay() - 1).toString(),
-          chooseGroupEvent: (group) => setGroup(group)
-        }}>
+        value={updatedContextData}>
         {showRealApp ? <BottomNavigator /> : <Start />}
       </AppContext.Provider>
     </>

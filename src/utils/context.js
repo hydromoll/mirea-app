@@ -8,8 +8,13 @@ const AppContext = React.createContext({
   startDate: new Date(),
   currentDate: new Date(),
   initialDay: 0,
-  chooseGroupEvent: () => {
-  }
+  setGroup: () => {},
+  currentGroup: "",
+  setCurrentGroup: () => {},
+  isVisibleModalDialog: false,
+  setVisibleModalDialog: () => {},
+  isVisibleBottomSheet: false,
+  setVisibleBottomSheet: () => {}
 });
 
 export default AppContext;

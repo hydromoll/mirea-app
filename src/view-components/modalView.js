@@ -1,18 +1,19 @@
 import Modal from "react-native-modal";
 import styled from "styled-components/native";
-import React, { useState } from "react";
+import React, { useContext} from "react";
 import normalize from "../utils/normalizeFontSize";
 import InputGroupView from "./inputGroupView";
+import AppContext from "../utils/context";
 
 const ModalView = () => {
-  const [modalVisible, setModalVisible] = useState(true);
+  const context = useContext(AppContext);
   return (
     <Container>
       <Modal
         animationType="slide"
         transparent={true}
-        isVisible={modalVisible}
-        onBackdropPress={()=>{setModalVisible(false)}}
+        isVisible={context.isVisibleModalDialog}
+        onBackdropPress={()=>{context.setVisibleModalDialog(false)}}
       >
         <Background>
           <YourGroup>Ваша группа:</YourGroup>

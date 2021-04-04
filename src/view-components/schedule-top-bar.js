@@ -3,13 +3,13 @@ import React, { useContext } from "react";
 import AppContext from "../utils/context";
 
 const ScheduleTopBar = (props) => {
-  const schedule = useContext(AppContext);
+  const context = useContext(AppContext);
 
   return (
     <TopBar>
       <DayName>{props.day}</DayName>
       <WeekNumberView>
-        <WeekNumber>{`Неделя ${schedule.weekNumber}`}</WeekNumber>
+        <WeekNumber>{`Неделя ${context.weekNumber}`}</WeekNumber>
       </WeekNumberView>
     </TopBar>
   );

@@ -4,10 +4,11 @@ import { css } from "styled-components";
 import React, { useContext, useState } from "react";
 import AppContext from "../utils/context";
 
-const InputGroupView = (props) => {
+const InputGroupView = () => {
   const [text, setText] = useState("");
   const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
   const context = useContext(AppContext);
+  const defaultValue = context.currentGroup;
 
   const setGroupName = (groupName) => {
     const re = /^([а-яА-Я\w]{4}-\d{2}-\d{2})$/g;
@@ -22,15 +23,14 @@ const InputGroupView = (props) => {
         placeholder="XXXX-00-00"
         placeholderTextColor="#6A6A74"
         onChangeText={(text) => setGroupName(text)}
+        defaultValue={defaultValue}
         autoFocus
       />
       <Forward
         disabled={!isCorrectGroupName}
         onPress={() => {
-          context.chooseGroupEvent(text);
-          if (props.callback) {
-            props.callback();
-          }
+          context.setGroup(text);
+          context.setVisibleModalDialog(false);
         }}
       >
         <Check disabled={!isCorrectGroupName} />

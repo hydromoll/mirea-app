@@ -4,7 +4,7 @@ import normalize from "../utils/normalizeFontSize";
 import ActionSheet from "./actionSheet";
 import InputGroupView from "./inputGroupView";
 
-export default function startScreenView(props) {
+export default function startScreenView() {
 
   const actionItems = [
     {
