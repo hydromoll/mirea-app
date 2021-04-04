@@ -1,4 +1,3 @@
-import { Text } from "react-native";
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import React from "react";
 import normalize from "../utils/normalizeFontSize";
