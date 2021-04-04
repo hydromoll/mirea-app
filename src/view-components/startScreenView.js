@@ -1,32 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
 import normalize from "../utils/normalizeFontSize";
-import ActionSheet from "./actionSheet";
 import InputGroupView from "./inputGroupView";
 
 export default function startScreenView() {
-
-  const actionItems = [
-    {
-      id: 1,
-      label: "Написать в ВК",
-      onPress: () => {
-      }
-    },
-    {
-      id: 2,
-      label: "Написать в Telegram",
-      onPress: () => {
-      }
-    },
-    {
-      id: 3,
-      label: "Написать на почту",
-      onPress: () => {
-      }
-    }
-  ];
-
   return (
     <Container>
       <Hi>Привет!</Hi>
