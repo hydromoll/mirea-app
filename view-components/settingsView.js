@@ -1,23 +1,33 @@
-import React from "react";
-import { Text } from "react-native";
+import React, { useContext } from "react";
 import styled from "styled-components/native";
 import normalize from "../utils/normalizeFontSize";
+import ModalView from "./modalView";
+import logo from "../images/panda.png";
+import { Dimensions } from "react-native";
+import { ScheduleContext } from "../App";
+
 
 export default function settingsView() {
+
+  const { height } = Dimensions.get("window");
+  const context = useContext(ScheduleContext);
+
+
   return (
-    <Container>
+    <Container style={{ height }}>
       <TopBar>
-        <Logo source={require("../images/panda.png")} />
+        <Logo source={logo} />
         <Title>Расписание МИРЭА 1.0</Title>
         <Developers>by hydromoll and misha98857</Developers>
       </TopBar>
       <GroupContainer>
         <Urgrp>Ваша группа</Urgrp>
         <GroupNum>
-          <Urgrp> ИВБО-13-19 </Urgrp>
+          <Urgrp>ИВБО-10-19</Urgrp>
         </GroupNum>
       </GroupContainer>
       <Problem>Возникла проблема?</Problem>
+      <ModalView />
     </Container>
   );
 }

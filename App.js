@@ -12,7 +12,9 @@ export const ScheduleContext = React.createContext({
   weekName: "odd",
   startDate: new Date(),
   currentDate: new Date(),
-  initialDay: 0
+  initialDay: 0,
+  chooseGroupEvent: () => {
+  }
 });
 
 const App = () => {
@@ -38,7 +40,15 @@ const App = () => {
 
   const setGroup = async (group) => {
     try {
-      const transliteratedGroup = translit.translit(group.toString().toLocaleLowerCase(), 1);
+      const lowerCaseGroup = group.toString().toLocaleLowerCase();
+      let transliteratedGroup;
+      if (/[а-яА-ЯЁё]/.test(lowerCaseGroup)) {
+        transliteratedGroup = translit.translit(lowerCaseGroup, 1);
+      } else {
+        transliteratedGroup = lowerCaseGroup;
+      }
+
+
       await AsyncStorage.setItem("group", transliteratedGroup);
       await AsyncStorage.setItem("showApp", "true");
       loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, transliteratedGroup);
@@ -53,7 +63,7 @@ const App = () => {
     getGroupFromStorage();
   }, []);
 
-  return showRealApp ?
+  return (
     <ScheduleContext.Provider
       value={{
         isLoadingSchedule,
@@ -62,9 +72,12 @@ const App = () => {
         currentDate,
         weekName,
         weekNumber,
-        initialDay: (currentDate.getDay() - 1).toString()
-      }}><BottomNavigator /></ScheduleContext.Provider> :
-    <Start chooseGroupEvent={(group) => setGroup(group)} />;
+        initialDay: (currentDate.getDay() - 1).toString(),
+        chooseGroupEvent: (group) => setGroup(group)
+      }}>
+      {showRealApp ? <BottomNavigator /> : <Start />}
+    </ScheduleContext.Provider>
+  );
 };
 
 export default App;

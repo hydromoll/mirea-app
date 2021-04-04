@@ -1,35 +1,38 @@
-import { Modal, StyleSheet, View } from "react-native";
-import styled from "styled-components";
+import Modal from "react-native-modal";
+import styled from "styled-components/native";
 import React, { useState } from "react";
 import normalize from "../utils/normalizeFontSize";
+import InputGroupView from "./inputGroupView";
+
 const ModalView = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={modalVisible}
-      onRequestClose={() => {
-        setModalVisible(!modalVisible);
-      }}
-    >
-      <Background>
-        <YourGroup>Ваша группа:</YourGroup>
-        <GroupField placeholder="XXXX-00-00" placeholderTextColor="white" />
-        <Button></Button>
-      </Background>
-    </Modal>
+    <Container>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        isVisible={modalVisible}
+      >
+        <Background>
+          <YourGroup>Ваша группа:</YourGroup>
+          <InputGroupView callback={() => setModalVisible(false)}/>
+        </Background>
+      </Modal>
+    </Container>
   );
 };
+const Container = styled.View`
+`;
+
 const Background = styled.View`
-  margin: 20;
-  background-color: white;
+  margin: 20px;
+  background-color: #000;
   border-radius: 20px;
   padding: 35px;
   align-items: center;
 `;
 const YourGroup = styled.Text`
-  font-size: ${normalize(10)};
+  font-size: ${normalize(14)};
   color: white;
 `;
 const GroupField = styled.TextInput`
@@ -43,7 +46,12 @@ const GroupField = styled.TextInput`
   text-align: center;
 `;
 const Button = styled.TouchableOpacity`
-  border-radius: 5px;
-  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  margin-top: 30px;
+  height: 52px;
+  width: 124px;
+  background-color: #6180e8;
 `;
 export default ModalView;

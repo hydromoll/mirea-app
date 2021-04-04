@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import ScheduleScreen from "../logic-components/scheduleScreen";
+import { Dimensions } from "react-native-web";
 
 const BottomTabNavigator = createBottomTabNavigator();
 

@@ -1,42 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/native";
-import { Check } from "../images/Icons";
 import normalize from "../utils/normalizeFontSize";
-import { css } from "styled-components";
+import ActionSheet from "./actionSheet";
+import InputGroupView from "./inputGroupView";
 
 export default function startScreenView(props) {
-  const [text, setText] = useState("");
-  const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
 
-  const setGroupName = (groupName) => {
-    const re = /^([а-яА-Я\w]{4}-\d{2}-\d{2})$/g;
-    const isGroupCorrect = re.test(groupName);
-    setText(groupName);
-    setIsCorrectGroupName(isGroupCorrect);
-  };
+  const actionItems = [
+    {
+      id: 1,
+      label: "Написать в ВК",
+      onPress: () => {
+      }
+    },
+    {
+      id: 2,
+      label: "Написать в Telegram",
+      onPress: () => {
+      }
+    },
+    {
+      id: 3,
+      label: "Написать на почту",
+      onPress: () => {
+      }
+    }
+  ];
 
   return (
     <Container>
       <Hi>Привет!</Hi>
       <Choose>Укажи свою группу</Choose>
-      <GroupField
-        onPress={() => props.chooseGroupEvent()}
-        placeholder="XXXX-00-00"
-        placeholderTextColor="white"
-        onChangeText={(text) => setGroupName(text)}
-        autoFocus
-      />
-      <Forward
-        disabled={!isCorrectGroupName}
-        onPress={() => props.chooseGroupEvent(text)}
-      >
-        <Check disabled={!isCorrectGroupName} />
-      </Forward>
+      <InputGroupView/>
       <Problembutton>
-        <Problem onPress={() => props.chooseGroupEvent()}>
+        <Problem>
           Возникла проблема?
         </Problem>
       </Problembutton>
+      {/*<ActionSheet actionItems={actionItems} actionTextColor={"#333"} />*/}
     </Container>
   );
 }
@@ -56,32 +57,6 @@ const Choose = styled.Text`
   margin-top: 15px;
   font-size: ${normalize(15)};
   color: white;
-`;
-const GroupField = styled.TextInput`
-  margin-top: 30px;
-  color: white;
-  background-color: #1f2025;
-  padding: 12px;
-  width: 250px;
-  height: 52px;
-  border-radius: 7px;
-  text-align: center;
-`;
-const Forward = styled.TouchableOpacity`
-  align-items: center;
-  justify-content: center;
-  border-radius: 7px;
-  margin-top: 30px;
-  height: 52px;
-  width: 124px;
-  ${(props) =>
-    props.disabled
-      ? css`
-          background: #35353f;
-        `
-      : css`
-          background: #6180e8;
-        `}
 `;
 const Problembutton = styled.TouchableOpacity`
   position: absolute;
