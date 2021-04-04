@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ActivityIndicator, FlatList } from "react-native";
 import styled from "styled-components/native";
 import { getDaySchedule } from "../utils/dataLoader";
-import { ScheduleContext } from "../App";
+import { ScheduleContext } from "../../App";
 import PairCard from "../view-components/pairCard";
 
 export default function daySchedule(props) {

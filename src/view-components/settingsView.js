@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import styled from "styled-components/native";
 import normalize from "../utils/normalizeFontSize";
 import ModalView from "./modalView";
-import logo from "../images/panda.png";
+import logo from "../../images/panda.png";
 import { Dimensions } from "react-native";
-import { ScheduleContext } from "../App";
+import { ScheduleContext } from "../../App";
 
 
 export default function settingsView() {

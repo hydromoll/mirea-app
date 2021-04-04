@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Start from "./view-components/startScreenView";
-import BottomNavigator from "./navigation-components/bottomNavigator";
-import { loadSchedule } from "./utils/dataLoader";
+import Start from "./src/view-components/startScreenView";
+import BottomNavigator from "./src/navigation-components/bottomNavigator";
+import { loadSchedule } from "./src/utils/dataLoader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { translit } from "./utils/transliter";
+import { translit } from "./src/utils/transliter";
 
 export const ScheduleContext = React.createContext({
   isLoadingSchedule: true,

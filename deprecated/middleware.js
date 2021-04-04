@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
 import Schedule from "../images/schedule";
-import Start from "../view-components/startScreenView";
-import Stgs from "../view-components/settingsView";
-import Sec from "../logic-components/daySchedule";
+import Start from "../src/view-components/startScreenView";
+import Stgs from "../src/view-components/settingsView";
+import Sec from "../src/logic-components/daySchedule";
 import Srch from "./Searchprof";
 import Settings from "./Settings";
 

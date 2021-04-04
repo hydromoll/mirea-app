@@ -2,7 +2,7 @@ import styled from "styled-components/native/dist/styled-components.native.esm";
 import { SafeAreaView } from "react-native";
 import getWeekNumber from "../utils/calculateWeek";
 import React, { useContext } from "react";
-import { ScheduleContext } from "../App";
+import { ScheduleContext } from "../../App";
 
 const ScheduleTopBar = (props) => {
   const schedule = useContext(ScheduleContext);

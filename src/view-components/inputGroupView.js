@@ -1,8 +1,8 @@
-import { Check } from "../images/Icons";
+import { Check } from "../../images/Icons";
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import { css } from "styled-components";
 import React, { useContext, useState } from "react";
-import { ScheduleContext } from "../App";
+import { ScheduleContext } from "../../App";
 
 const InputGroupView = (props) => {
   const [text, setText] = useState("");
