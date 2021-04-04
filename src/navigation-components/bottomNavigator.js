@@ -1,6 +1,6 @@
-import Schedule from "../../images/Scheduleicon";
+import Schedule from "../../assets/images-components/Scheduleicon";
 import SettingsView from "../view-components/settingsView";
-import Menu from "../../images/menuicon";
+import Menu from "../../assets/images-components/menuicon";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";

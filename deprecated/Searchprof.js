@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import Srchicn from "../images/Searchicn";
+import Srchicn from "../assets/images/Searchicn";
 
 export default function App({ navigation }) {
   return (

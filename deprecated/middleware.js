@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import Schedule from "../images/schedule";
+import Schedule from "../assets/images/schedule";
 import Start from "../src/view-components/startScreenView";
 import Stgs from "../src/view-components/settingsView";
 import Sec from "../src/logic-components/daySchedule";

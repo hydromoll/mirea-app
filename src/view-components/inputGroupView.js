@@ -1,4 +1,4 @@
-import { Check } from "../../images/Icons";
+import { Check } from "../../assets/images-components/Icons";
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import { css } from "styled-components";
 import React, { useContext, useState } from "react";

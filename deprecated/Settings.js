@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Linking, Text, View } from "react-native";
 import styled from "styled-components/native";
-import Sicn from "../images/Settingsicn";
-import { Contact, Mail, Tg, Vk } from "../images/Icons";
+import Sicn from "../assets/images/Settingsicn";
+import { Contact, Mail, Tg, Vk } from "../assets/images/Icons";
 
 export default function App({ navigation }) {
   const sheetRef = React.useRef(0);
