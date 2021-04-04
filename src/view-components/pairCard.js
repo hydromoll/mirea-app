@@ -13,11 +13,11 @@ const PairCard = (props) => (
       <Name>{`${props.name + (props.name && ",") || "—"} ${props.type}`}</Name>
       <Prof style={{ color: "gray" }}>{`${props.professor || "—"}`}</Prof>
     </Title>
-    <Rooom
+    <Room
       style={{
         color: "white"
       }}
-    >{`${props.room || "—"}`}</Rooom>
+    >{`${props.room || "—"}`}</Room>
   </Card>
 );
 
@@ -59,9 +59,10 @@ const Title = styled.View`
   padding-left: 2%;
   width: 55%;
 `;
-const Rooom = styled.Text`
+const Room = styled.Text`
   width: 25%;
   text-align: center;
+  border-radius: 6px;
   background-color: #4b4f5b;
   font-size: ${normalize(13)};
   padding: 7px 10px;

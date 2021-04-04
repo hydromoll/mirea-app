@@ -17,7 +17,7 @@ export default function settingsView() {
     <Container style={{ height }}>
       <TopBar>
         <Logo source={logo} />
-        <Title>Расписание МИРЭА 1.0</Title>
+        <Title>Расписание МИРЭА</Title>
         <Developers>by hydromoll and misha98857</Developers>
       </TopBar>
       <GroupContainer>
@@ -47,6 +47,7 @@ const TopBar = styled.View`
   border-bottom-right-radius: 22px;
 `;
 const Logo = styled.Image`
+  margin-top:25px;
   height: 120px;
   width: 120px;
 `;

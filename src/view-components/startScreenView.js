@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/native";
 import normalize from "../utils/normalizeFontSize";
 import InputGroupView from "./inputGroupView";
+import BottomSheetView from "./bottomSheet";
 
 export default function startScreenView() {
   return (
@@ -9,12 +10,7 @@ export default function startScreenView() {
       <Hi>Привет!</Hi>
       <Choose>Укажи свою группу</Choose>
       <InputGroupView/>
-      <Problembutton>
-        <Problem>
-          Возникла проблема?
-        </Problem>
-      </Problembutton>
-      {/*<ActionSheet actionItems={actionItems} actionTextColor={"#333"} />*/}
+      <BottomSheetView/>
     </Container>
   );
 }
