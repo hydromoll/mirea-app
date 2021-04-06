@@ -28,6 +28,7 @@ const InputGroupView = () => {
       />
       <Forward
         disabled={!isCorrectGroupName}
+        errorState={context.isError}
         onPress={() => {
           context.setGroup(text);
           context.setVisibleModalDialog(false);
@@ -57,13 +58,18 @@ const Forward = styled.TouchableOpacity`
   height: 52px;
   width: 124px;
   ${(props) =>
-          props.disabled
+          props.errorState
                   ? css`
-                    background: #35353f;
+                    background: coral;
                   `
-                  : css`
-                    background: #6180e8;
-                  `}
+                  :
+                  props.disabled
+                          ? css`
+                            background: #35353f;
+                          `
+                          : css`
+                            background: #6180e8;
+                          `}
 `;
 
 export default InputGroupView;

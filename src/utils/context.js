@@ -14,7 +14,9 @@ const AppContext = React.createContext({
   isVisibleModalDialog: false,
   setVisibleModalDialog: () => {},
   isVisibleBottomSheet: false,
-  setVisibleBottomSheet: () => {}
+  setVisibleBottomSheet: () => {},
+  isError: false,
+  errorText: ""
 });
 
 export default AppContext;

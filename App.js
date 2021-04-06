@@ -5,6 +5,8 @@ import { loadSchedule } from "./src/utils/dataLoader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { translit } from "./src/utils/transliter";
 import AppContext from "./src/utils/context";
+import convertScheduleData from "./src/utils/daysAdapter";
+import getWeekNumber from "./src/utils/calculateWeek";
 
 const App = () => {
   const [showRealApp, setShowRealApp] = useState(false);
@@ -17,15 +19,15 @@ const App = () => {
   const [isVisibleBottomSheet, setVisibleBottomSheet] = useState(false);
   const [isVisibleModalDialog, setVisibleModalDialog] = useState(false);
   const [currentGroup, setCurrentGroup] = useState("");
+  const [isError, setErrorState] = useState(false);
+  const [errorText, setErrorTextState] = useState("");
 
   const getGroupFromStorage = async () => {
     try {
       const group = await AsyncStorage.getItem("group");
       if (group !== null) {
-        loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, group);
-        setCurrentDate(new Date());
-        setCurrentGroup(group);
-        setShowRealApp(true);
+        // loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, group, setErrorState, setErrorTextState, setShowRealApp, setCurrentDate, setCurrentGroup);
+        await setGroup(group);
       }
     } catch (e) {
     }
@@ -40,13 +42,34 @@ const App = () => {
       } else {
         transliteratedGroup = lowerCaseGroup;
       }
-      await AsyncStorage.setItem("group", transliteratedGroup);
-      await AsyncStorage.setItem("showApp", "true");
-      loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, transliteratedGroup);
-      setCurrentDate(new Date());
-      setCurrentGroup(group);
-      setShowRealApp(true);
+
+      loadSchedule(transliteratedGroup).then((schedule) => {
+        if (schedule.error) {
+          setErrorState(true);
+          setErrorTextState("Такой группы не найдено");
+          console.warn("Такой группы не найдено");
+          return;
+        }
+        setSchedule(convertScheduleData(schedule));
+        const semesterStartDate = schedule.semester.startDate;
+        const currentWeekNumber = getWeekNumber(semesterStartDate, new Date());
+        setWeekNumber(currentWeekNumber);
+        setWeekName(currentWeekNumber % 2 ? "odd" : "even");
+        setStartDate(semesterStartDate);
+        AsyncStorage.setItem("group", group);
+        AsyncStorage.setItem("showApp", "true");
+        setCurrentDate(new Date());
+        setCurrentGroup(group);
+        setShowRealApp(true);
+        setErrorState(false);
+      }).catch(() => {
+        setErrorState(true);
+        setErrorTextState("Ошибка подключения к интернету");
+        console.warn("Ошибка подключения к интернету");
+      })
+        .finally(() => setLoadingSchedule(false));
     } catch (e) {
+
     }
   };
 
@@ -67,7 +90,9 @@ const App = () => {
     isVisibleModalDialog,
     setVisibleModalDialog: (isVisible) => setVisibleModalDialog(isVisible),
     setVisibleBottomSheet: (isVisible) => setVisibleBottomSheet(isVisible),
-    currentGroup
+    currentGroup,
+    isError,
+    errorText
   };
 
   return (
