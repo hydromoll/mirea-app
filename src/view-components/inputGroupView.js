@@ -3,7 +3,7 @@ import styled from "styled-components/native/dist/styled-components.native.esm";
 import { css } from "styled-components";
 import React, { useContext, useState } from "react";
 import AppContext from "../utils/context";
-import { Animated } from "react-native";
+import { Animated, Easing } from "react-native";
 
 const InputGroupView = () => {
   const [text, setText] = useState("");
@@ -20,12 +20,11 @@ const InputGroupView = () => {
   };
 
   const startShake = () => {
-    Animated.loop(Animated.sequence([
-      Animated.timing(shakeAnimation, { toValue: 5, duration: 100, useNativeDriver: true }),
-      Animated.timing(shakeAnimation, { toValue: -5, duration: 100, useNativeDriver: true }),
-      Animated.timing(shakeAnimation, { toValue: 5, duration: 100, useNativeDriver: true }),
-      Animated.timing(shakeAnimation, { toValue: 0, duration: 100, useNativeDriver: true })
-    ])).start();
+    Animated.timing(shakeAnimation, {
+      duration: 400,
+      toValue: 3,
+      ease: Easing.bounce
+    }).start();
   };
 
   if (context.isError) {
@@ -42,7 +41,14 @@ const InputGroupView = () => {
         defaultValue={defaultValue}
         autoFocus
       />
-      <Animated.View style={{ transform: [{ translateX: shakeAnimation }] }}>
+      <Animated.View style={{
+        transform: [{
+          translateX: shakeAnimation.interpolate({
+            inputRange: [0, .5, 1, 1.5, 2, 2.5, 3],
+            outputRange: [0, -15, 0, 15, 0, -15, 0]
+          })
+        }]
+      }}>
         <Forward
           disabled={!isCorrectGroupName}
           errorState={context.isError}
@@ -76,22 +82,18 @@ const Forward = styled.TouchableOpacity`
   height: 52px;
   width: 124px;
   ${(props) =>
-          props.isLoading
+          props.errorState
                   ? css`
-                    background: coral;
-                  ` :
-                  props.errorState
+                    background: #35353f;
+                  `
+                  :
+                  props.disabled
                           ? css`
                             background: #35353f;
                           `
-                          :
-                          props.disabled
-                                  ? css`
-                                    background: #35353f;
-                                  `
-                                  : css`
-                                    background: #6180e8;
-                                  `}
+                          : css`
+                            background: #6180e8;
+                          `}
 `;
 
 export default InputGroupView;

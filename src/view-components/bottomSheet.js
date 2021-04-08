@@ -31,7 +31,7 @@ export default function BottomSheetView() {
       <Problem onPress={() => refRBSheet.current.open()}>Возникла проблема?</Problem>
       <RBSheet
         ref={refRBSheet}
-        height={400}
+        height={380}
         closeOnDragDown={true}
         closeOnPressMask={true}
         customStyles={{
@@ -59,15 +59,17 @@ export default function BottomSheetView() {
               <Close onPress={() => refRBSheet.current.close()}>Закрыть</Close>
             </Cancel>
           </Header>
-          {buttonList.map(({ title, icon, link }, index) => (
-            <Search key={index} onPress={() => Linking.openURL(link)}>
-              <Name>
-                <Icon>{icon}</Icon>
-                <ItemTextWrapper>
-                  <ItemText>{title}</ItemText>
-                </ItemTextWrapper>
-              </Name>
-            </Search>))}
+          <ListContainer>
+            {buttonList.map(({ title, icon, link }, index) => (
+              <Search key={index} onPress={() => Linking.openURL(link)}>
+                <Name>
+                  <Icon>{icon}</Icon>
+                  <ItemTextWrapper>
+                    <ItemText>{title}</ItemText>
+                  </ItemTextWrapper>
+                </Name>
+              </Search>))}
+          </ListContainer>
 
 
           {/*<Writevk*/}
@@ -139,7 +141,7 @@ const HeaderContainer = styled.View`
 const Line = styled.View`
   top: 40px;
   position: absolute;
-  border: 0.5px white solid;
+  border: 0.5px #9B9B9B solid;
   width: 100%;
 `;
 const Buttons = styled.View`
@@ -151,7 +153,7 @@ const ContactUs = styled.Text`
   font-size: 20px;
 `;
 const Name = styled.View`
-  margin-top: 40px;
+  margin-top: 30px;
   flex-direction: row;
   align-items: center;
 `;
@@ -165,7 +167,13 @@ const Cancel = styled.TouchableOpacity`
   right: 10px;
 `;
 const Close = styled.Text`
-  color: white;`;
+  color: #6180e8;
+`;
+
+const ListContainer = styled.View`
+  width: 100%;
+  margin-top: 25px;
+`
 
 const Icon = styled.View`
 `;

@@ -21,6 +21,7 @@ const App = () => {
   const [currentGroup, setCurrentGroup] = useState("");
   const [isError, setErrorState] = useState(false);
   const [errorText, setErrorTextState] = useState("");
+  const [isAppLoading, setAppLoading] = useState(true);
 
   const getGroupFromStorage = async () => {
     try {
@@ -28,6 +29,8 @@ const App = () => {
       if (group !== null) {
         // loadSchedule(setSchedule, setLoadingSchedule, setStartDate, setWeekNumber, setWeekName, group, setErrorState, setErrorTextState, setShowRealApp, setCurrentDate, setCurrentGroup);
         await setGroup(group);
+      } else {
+        setAppLoading(false);
       }
     } catch (e) {
     }
@@ -50,7 +53,8 @@ const App = () => {
           setErrorState(true);
           setErrorTextState("Такой группы не найдено");
           console.warn("Такой группы не найдено");
-          setTimeout(() => setErrorState(false), 400);
+          setAppLoading(false);
+          setTimeout(() => setErrorState(false), 800);
           return;
         }
         setSchedule(convertScheduleData(schedule));
@@ -67,11 +71,13 @@ const App = () => {
         setShowRealApp(true);
         setErrorState(false);
         setLoadingSchedule(false);
+        setAppLoading(false);
       }).catch(() => {
         setLoadingSchedule(false);
         setErrorState(true);
         setErrorTextState("Ошибка подключения к интернету");
-        setTimeout(() => setErrorState(false), 500);
+        setAppLoading(false);
+        setTimeout(() => setErrorState(false), 800);
         console.warn("Ошибка подключения к интернету");
       })
         .finally(() => setLoadingSchedule(false));
@@ -101,6 +107,13 @@ const App = () => {
     isError,
     errorText
   };
+
+  if (isAppLoading) {
+    return <AppContext.Provider
+      value={updatedContextData}>
+      <BottomNavigator />
+    </AppContext.Provider>;
+  }
 
   return (
     <>
