@@ -12,7 +12,7 @@ const App = () => {
   const [showRealApp, setShowRealApp] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [isLoadingSchedule, setLoadingSchedule] = useState(true);
+  const [isLoadingSchedule, setLoadingSchedule] = useState(false);
   const [schedule, setSchedule] = useState([]);
   const [weekNumber, setWeekNumber] = useState("0");
   const [weekName, setWeekName] = useState("odd");
@@ -35,6 +35,7 @@ const App = () => {
 
   const setGroup = async (group) => {
     try {
+      setLoadingSchedule(true);
       const lowerCaseGroup = group.toString().toLocaleLowerCase();
       let transliteratedGroup;
       if (/[а-яА-ЯЁё]/.test(lowerCaseGroup)) {
@@ -45,10 +46,11 @@ const App = () => {
 
       loadSchedule(transliteratedGroup).then((schedule) => {
         if (schedule.error) {
+          setLoadingSchedule(false);
           setErrorState(true);
           setErrorTextState("Такой группы не найдено");
           console.warn("Такой группы не найдено");
-          setTimeout(() => setErrorState(false), 1500);
+          setTimeout(() => setErrorState(false), 400);
           return;
         }
         setSchedule(convertScheduleData(schedule));
@@ -61,12 +63,15 @@ const App = () => {
         AsyncStorage.setItem("showApp", "true");
         setCurrentDate(new Date());
         setCurrentGroup(group);
+        setVisibleModalDialog(false);
         setShowRealApp(true);
         setErrorState(false);
+        setLoadingSchedule(false);
       }).catch(() => {
+        setLoadingSchedule(false);
         setErrorState(true);
         setErrorTextState("Ошибка подключения к интернету");
-        setTimeout(() => setErrorState(false), 1500);
+        setTimeout(() => setErrorState(false), 500);
         console.warn("Ошибка подключения к интернету");
       })
         .finally(() => setLoadingSchedule(false));

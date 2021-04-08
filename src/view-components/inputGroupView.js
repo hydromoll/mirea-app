@@ -3,12 +3,14 @@ import styled from "styled-components/native/dist/styled-components.native.esm";
 import { css } from "styled-components";
 import React, { useContext, useState } from "react";
 import AppContext from "../utils/context";
+import { Animated } from "react-native";
 
 const InputGroupView = () => {
   const [text, setText] = useState("");
   const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
   const context = useContext(AppContext);
   const defaultValue = context.currentGroup;
+  const shakeAnimation = new Animated.Value(0);
 
   const setGroupName = (groupName) => {
     const re = /^([а-яА-Я\w]{4}-\d{2}-\d{2})$/g;
@@ -16,6 +18,20 @@ const InputGroupView = () => {
     setText(groupName);
     setIsCorrectGroupName(isGroupCorrect);
   };
+
+  const startShake = () => {
+    Animated.loop(Animated.sequence([
+      Animated.timing(shakeAnimation, { toValue: 5, duration: 100, useNativeDriver: true }),
+      Animated.timing(shakeAnimation, { toValue: -5, duration: 100, useNativeDriver: true }),
+      Animated.timing(shakeAnimation, { toValue: 5, duration: 100, useNativeDriver: true }),
+      Animated.timing(shakeAnimation, { toValue: 0, duration: 100, useNativeDriver: true })
+    ])).start();
+  };
+
+  if (context.isError) {
+    startShake();
+  }
+
 
   return (
     <>
@@ -26,16 +42,18 @@ const InputGroupView = () => {
         defaultValue={defaultValue}
         autoFocus
       />
-      <Forward
-        disabled={!isCorrectGroupName}
-        errorState={context.isError}
-        onPress={() => {
-          context.setGroup(text);
-          context.setVisibleModalDialog(false);
-        }}
-      >
-        <Check disabled={!isCorrectGroupName} />
-      </Forward>
+      <Animated.View style={{ transform: [{ translateX: shakeAnimation }] }}>
+        <Forward
+          disabled={!isCorrectGroupName}
+          errorState={context.isError}
+          isLoading={context.isLoadingSchedule}
+          onPress={() => {
+            context.setGroup(text);
+          }}
+        >
+          <Check disabled={!isCorrectGroupName} />
+        </Forward>
+      </Animated.View>
     </>
   );
 };
@@ -58,18 +76,22 @@ const Forward = styled.TouchableOpacity`
   height: 52px;
   width: 124px;
   ${(props) =>
-          props.errorState
+          props.isLoading
                   ? css`
                     background: coral;
-                  `
-                  :
-                  props.disabled
+                  ` :
+                  props.errorState
                           ? css`
                             background: #35353f;
                           `
-                          : css`
-                            background: #6180e8;
-                          `}
+                          :
+                          props.disabled
+                                  ? css`
+                                    background: #35353f;
+                                  `
+                                  : css`
+                                    background: #6180e8;
+                                  `}
 `;
 
 export default InputGroupView;
