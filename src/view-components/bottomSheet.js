@@ -51,14 +51,22 @@ export default function BottomSheetView() {
       >
         <Buttons>
           <Header>
-            <ContactUs>Обратная связь</ContactUs>
+            <HeaderContainer>
+              <ContactUs>Обратная связь</ContactUs>
+              <Line />
+            </HeaderContainer>
             <Cancel>
               <Close onPress={() => refRBSheet.current.close()}>Закрыть</Close>
             </Cancel>
           </Header>
           {buttonList.map(({ title, icon, link }, index) => (
             <Search key={index} onPress={() => Linking.openURL(link)}>
-              <Name>{icon}{title}</Name>
+              <Name>
+                <Icon>{icon}</Icon>
+                <ItemTextWrapper>
+                  <ItemText>{title}</ItemText>
+                </ItemTextWrapper>
+              </Name>
             </Search>))}
 
 
@@ -123,6 +131,17 @@ const Problem = styled.Text`
 const Search = styled.TouchableOpacity`
   width: 100%;
 `;
+const HeaderContainer = styled.View`
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+`;
+const Line = styled.View`
+  top: 40px;
+  position: absolute;
+  border: 0.5px white solid;
+  width: 100%;
+`;
 const Buttons = styled.View`
   padding: 16px;
   width: 100%;
@@ -131,19 +150,33 @@ const ContactUs = styled.Text`
   color: white;
   font-size: 20px;
 `;
-const Name = styled.Text`
-  font-size: 20px;
-  color: white;
+const Name = styled.View`
   margin-top: 40px;
+  flex-direction: row;
+  align-items: center;
 `;
 const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
-const Cancel = styled.TouchableOpacity``;
+const Cancel = styled.TouchableOpacity`
+  position: absolute;
+  right: 10px;
+`;
 const Close = styled.Text`
   color: white;`;
+
+const Icon = styled.View`
+`;
+const ItemText = styled.Text`
+  font-size: 20px;
+  color: white;
+`;
+const ItemTextWrapper = styled.Text`
+  margin-left: 20px;
+`;
+
 const Writevk = styled.TouchableOpacity``;
 const Writetg = styled.TouchableOpacity``;
 const WriteMail = styled.TouchableOpacity``;
