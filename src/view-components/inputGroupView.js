@@ -1,16 +1,16 @@
 import { Check } from "../../assets/images-components/Icons";
 import styled from "styled-components/native/dist/styled-components.native.esm";
 import { css } from "styled-components";
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import AppContext from "../utils/context";
-import { Animated, Easing } from "react-native";
+import * as Animatable from 'react-native-animatable'
 
 const InputGroupView = () => {
   const [text, setText] = useState("");
   const [isCorrectGroupName, setIsCorrectGroupName] = useState(false);
   const context = useContext(AppContext);
   const defaultValue = context.currentGroup;
-  const shakeAnimation = new Animated.Value(0);
+  const shakeAnimation = useRef();
 
   const setGroupName = (groupName) => {
     const re = /^([а-яА-Я\w]{4}-\d{2}-\d{2})$/g;
@@ -19,19 +19,10 @@ const InputGroupView = () => {
     setIsCorrectGroupName(isGroupCorrect);
   };
 
-  const startShake = () => {
-    Animated.timing(shakeAnimation, {
-      duration: 400,
-      toValue: 3,
-      ease: Easing.bounce
-    }).start();
-  };
-
   if (context.isError) {
-    startShake();
+    shakeAnimation.current.shake(800);
   }
-
-
+  
   return (
     <>
       <GroupField
@@ -41,14 +32,7 @@ const InputGroupView = () => {
         defaultValue={defaultValue}
         autoFocus
       />
-      <Animated.View style={{
-        transform: [{
-          translateX: shakeAnimation.interpolate({
-            inputRange: [0, .5, 1, 1.5, 2, 2.5, 3],
-            outputRange: [0, -15, 0, 15, 0, -15, 0]
-          })
-        }]
-      }}>
+      <Animatable.View ref={shakeAnimation}>
         <Forward
           disabled={!isCorrectGroupName}
           errorState={context.isError}
@@ -59,7 +43,7 @@ const InputGroupView = () => {
         >
           <Check disabled={!isCorrectGroupName} />
         </Forward>
-      </Animated.View>
+      </Animatable.View>
     </>
   );
 };
