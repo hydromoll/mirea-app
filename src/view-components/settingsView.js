@@ -9,9 +9,8 @@ import BottomSheetView from "./bottomSheet";
 
 export default function settingsView() {
 
-  const { height } = Dimensions.get("window");
+  const { height } = Dimensions.get("screen");
   const context = useContext(AppContext);
-
 
   return (
     <Container style={{ height }}>
@@ -26,7 +25,7 @@ export default function settingsView() {
           <Urgrp>{context.currentGroup}</Urgrp>
         </GroupNum>
       </GroupContainer>
-      <BottomSheetView/>
+      <BottomSheetView />
       <ModalView />
     </Container>
   );
@@ -47,7 +46,7 @@ const TopBar = styled.View`
   border-bottom-right-radius: 22px;
 `;
 const Logo = styled.Image`
-  margin-top:25px;
+  margin-top: 25px;
   height: 120px;
   width: 120px;
 `;

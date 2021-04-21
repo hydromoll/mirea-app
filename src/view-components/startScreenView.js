@@ -31,11 +31,3 @@ const Choose = styled.Text`
   font-size: ${normalize(15)};
   color: white;
 `;
-const Problembutton = styled.TouchableOpacity`
-  position: absolute;
-  bottom: 30px;
-`;
-const Problem = styled.Text`
-  font-size: 18px;
-  color: #6180e8;
-`;

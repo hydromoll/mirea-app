@@ -70,53 +70,6 @@ export default function BottomSheetView() {
                 </Name>
               </Search>))}
           </ListContainer>
-
-
-          {/*<Writevk*/}
-          {/*  style={{ marginTop: 20, flexDirection: "row" }}*/}
-          {/*  onPress={() => Linking.openURL("https://vk.com/hydromol")}*/}
-          {/*>*/}
-          {/*  <Vkontakte*/}
-          {/*    style={{*/}
-          {/*      color: "white",*/}
-          {/*      fontSize: 20,*/}
-
-          {/*      paddingLeft: 10,*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    Написать в ВК*/}
-          {/*  </Vkontakte>*/}
-          {/*</Writevk>*/}
-          {/*<Writetg*/}
-          {/*  style={{ marginTop: 20, flexDirection: "row" }}*/}
-          {/*  onPress={() => Linking.openURL("https://t.me/hydromoll")}*/}
-          {/*>*/}
-          {/*  <Tg />*/}
-          {/*  <Telegram*/}
-          {/*    style={{*/}
-          {/*      color: "white",*/}
-          {/*      fontSize: 20,*/}
-          {/*      paddingLeft: 10,*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    Написать в Telegram*/}
-          {/*  </Telegram>*/}
-          {/*</Writetg>*/}
-          {/*<WriteMail*/}
-          {/*  onPress={() => Linking.openURL("mailto:hydromoll@mail.ru")}*/}
-          {/*  style={{ flexDirection: "row", alignItems: "center", marginTop: 20 }}*/}
-          {/*>*/}
-          {/*  <Mail />*/}
-          {/*  <MailT*/}
-          {/*    style={{*/}
-          {/*      color: "white",*/}
-          {/*      fontSize: 20,*/}
-          {/*      paddingLeft: 10,*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    Написать на почту*/}
-          {/*  </MailT>*/}
-          {/*</WriteMail>*/}
         </Buttons>
       </RBSheet>
     </>
@@ -126,8 +79,8 @@ export default function BottomSheetView() {
 const Problem = styled.Text`
   align-self: center;
   position: absolute;
+  bottom: 15%;
   font-size: ${normalize(16)};
-  bottom: 80px;
   color: #6180e8;
 `;
 const Search = styled.TouchableOpacity`
@@ -184,10 +137,3 @@ const ItemText = styled.Text`
 const ItemTextWrapper = styled.Text`
   margin-left: 20px;
 `;
-
-const Writevk = styled.TouchableOpacity``;
-const Writetg = styled.TouchableOpacity``;
-const WriteMail = styled.TouchableOpacity``;
-const MailT = styled.Text``;
-const Telegram = styled.Text``;
-const Vkontakte = styled.Text``;
