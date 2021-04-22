@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "mirea-app",
-    "slug": "mirea-app",
+    "name": "Расписание МИРЭА",
+    "slug": "mirea-schedule",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#141519"
+      "backgroundColor": "#d8dab3"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,7 +17,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-1986591976683938~5628984986"
       }
@@ -26,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "dev.hydromoll.mirea"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

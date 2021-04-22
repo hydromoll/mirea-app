@@ -19,7 +19,7 @@ export default function daySchedule(props) {
         <>
           <AdMobBanner
             bannerSize="banner"
-            adUnitID="ca-app-pub-3940256099942544/2934735716" // Test ID, Replace with your-admob-unit-id
+            adUnitID="ca-app-pub-1986591976683938/4671126532"
             servePersonalizedAds={true} // true or false
           />
           <FlatList

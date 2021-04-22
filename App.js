@@ -7,6 +7,7 @@ import { translit } from "./src/utils/transliter";
 import AppContext from "./src/utils/context";
 import convertScheduleData from "./src/utils/daysAdapter";
 import getWeekNumber from "./src/utils/calculateWeek";
+import { StatusBar } from "react-native";
 
 const App = () => {
   const [showRealApp, setShowRealApp] = useState(false);
@@ -117,6 +118,9 @@ const App = () => {
 
   return (
     <>
+      <StatusBar
+        animated={true}
+        barStyle='light-content'/>
       <AppContext.Provider
         value={updatedContextData}>
         {showRealApp ? <BottomNavigator /> : <Start />}
