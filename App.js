@@ -8,8 +8,6 @@ import AppContext from "./src/utils/context";
 import convertScheduleData from "./src/utils/daysAdapter";
 import getWeekNumber from "./src/utils/calculateWeek";
 import { StatusBar } from "react-native";
-import {Snackbar} from 'react-native-snackbar';
-
 const App = () => {
   const [showRealApp, setShowRealApp] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -55,10 +53,6 @@ const App = () => {
           setErrorState(true);
           setErrorTextState("Такой группы не найдено");
           // console.error("Такой группы не найдено");
-          Snackbar.show({
-            text: 'Такой группы не найдено',
-            duration: Snackbar.LENGTH_LONG
-          })
           setAppLoading(false);
           setTimeout(() => setErrorState(false), 800);
           return;
@@ -85,10 +79,6 @@ const App = () => {
         setAppLoading(false);
         setTimeout(() => setErrorState(false), 800);
         //console.warn("Ошибка подключения к интернету");
-        Snackbar.show({
-          text: 'Ошибка подключения к интернету',
-          duration: Snackbar.LENGTH_LONG
-        })
       })
         .finally(() => setLoadingSchedule(false));
     } catch (e) {
