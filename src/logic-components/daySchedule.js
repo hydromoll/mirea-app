@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ActivityIndicator, FlatList } from "react-native";
 import styled from "styled-components/native";
 import AppContext from "../utils/context";
-import { AdMobBanner} from "expo-ads-admob";
+import { AdMobBanner } from "expo-ads-admob";
 import { getDaySchedule } from "../utils/dataLoader";
 import PairCard from "../view-components/pairCard";
 
@@ -17,11 +17,12 @@ export default function daySchedule(props) {
         <ActivityIndicator />
       ) : (
         <>
-          <AdMobBanner
+          {schedule.showAd && <AdMobBanner
             bannerSize="banner"
             adUnitID="ca-app-pub-1986591976683938/4671126532"
             servePersonalizedAds={true} // true or false
-          />
+            onDidFailToReceiveAdWithError={schedule.setShowAd(false)}
+          />}
           <FlatList
             style={{
               width: "100%",
@@ -52,9 +53,9 @@ export default function daySchedule(props) {
 
 
 const Container = styled.View`
-flex: 1;
-height: 100%;
-width: 100%;
-background-color: #141519;
-align-items: center;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  background-color: #141519;
+  align-items: center;
 `;

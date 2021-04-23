@@ -10,13 +10,14 @@ const AppContext = React.createContext({
   initialDay: 0,
   setGroup: () => {},
   currentGroup: "",
-  setCurrentGroup: () => {},
   isVisibleModalDialog: false,
   setVisibleModalDialog: () => {},
   isVisibleBottomSheet: false,
   setVisibleBottomSheet: () => {},
   isError: false,
-  errorText: ""
+  errorText: "",
+  setShowAd: () => {},
+  showAd: true
 });
 
 export default AppContext;

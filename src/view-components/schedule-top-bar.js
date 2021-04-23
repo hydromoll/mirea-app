@@ -7,10 +7,10 @@ const ScheduleTopBar = (props) => {
 
   return (
     <TopBar>
-      <DayName>{props.day}</DayName>
-      <WeekNumberView>
-        <WeekNumber>{`Неделя ${context.weekNumber}`}</WeekNumber>
-      </WeekNumberView>
+        <DayName>{props.day}</DayName>
+        <WeekNumberView>
+          <WeekNumber>{`Неделя ${context.weekNumber}`}</WeekNumber>
+        </WeekNumberView>
     </TopBar>
   );
 };
@@ -18,13 +18,13 @@ const ScheduleTopBar = (props) => {
 export default ScheduleTopBar;
 
 const TopBar = styled.View`
-  height: 120px;
+  height: 90px;
   width: 100%;
   background-color: #1f2025;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const DayName = styled.Text`
