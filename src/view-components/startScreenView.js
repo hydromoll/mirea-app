@@ -5,14 +5,14 @@ import InputGroupView from "./inputGroupView";
 import BottomSheetView from "./bottomSheet";
 
 export default function startScreenView() {
-  return (
-    <Container>
-      <Hi>Привет!</Hi>
-      <Choose>Укажи свою группу</Choose>
-      <InputGroupView/>
-      <BottomSheetView/>
-    </Container>
-  );
+    return (
+        <Container>
+            <Hi>Привет!</Hi>
+            <Choose>Укажи свою группу</Choose>
+            <InputGroupView/>
+            <BottomSheetView/>
+        </Container>
+    );
 }
 
 const Container = styled.View`
