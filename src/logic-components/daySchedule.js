@@ -9,19 +9,19 @@ import PairCard from "../view-components/pairCard";
 
 export default function daySchedule(props) {
 
-    const schedule = useContext(AppContext);
+    const context = useContext(AppContext);
 
     return (
         <Container>
-            {schedule.isLoadingSchedule ? (
+            {context.isLoadingSchedule ? (
                 <ActivityIndicator/>
             ) : (
                 <>
-                    {schedule.showAd && <AdMobBanner
+                    {context.showAd && <AdMobBanner
                         bannerSize="banner"
                         adUnitID="ca-app-pub-1986591976683938/4671126532"
                         servePersonalizedAds={true} // true or false
-                        onDidFailToReceiveAdWithError={() => setTimeout(() => schedule.setShowAd(false), 0)}
+                        onDidFailToReceiveAdWithError={() => setTimeout(() => context.setShowAd(false), 0)}
                     />}
                     <FlatList
                         style={{
@@ -31,11 +31,11 @@ export default function daySchedule(props) {
                         }}
                         showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
-                        data={getDaySchedule(schedule.schedule, +props.route.name)}
+                        data={getDaySchedule(context.schedule, +props.route.name)}
                         renderItem={({item}) => {
                             let renderPairs = [];
                             for (let key of Object.keys(item.info)) {
-                                if (key === schedule.weekNumber || key === schedule.weekName) {
+                                if (key === context.weekNumber.toString() || key === context.weekName.toString()) {
                                     const {name, professor, type, room} = item.info[key];
                                     renderPairs.push(
                                         <PairCard key={key} item={item} name={name} professor={professor} type={type}
