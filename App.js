@@ -54,7 +54,7 @@ const App = () => {
           setErrorTextState("Такой группы не найдено");
           // console.error("Такой группы не найдено");
           setAppLoading(false);
-          setTimeout(() => setErrorState(false), 800);
+          setTimeout(() => setErrorState(false), 1500);
           return;
         }
         setSchedule(convertScheduleData(schedule));
@@ -77,7 +77,7 @@ const App = () => {
         setErrorState(true);
         setErrorTextState("Ошибка подключения к интернету");
         setAppLoading(false);
-        setTimeout(() => setErrorState(false), 800);
+        setTimeout(() => setErrorState(false), 1500);
         //console.warn("Ошибка подключения к интернету");
       })
         .finally(() => setLoadingSchedule(false));
