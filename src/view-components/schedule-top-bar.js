@@ -18,13 +18,13 @@ const ScheduleTopBar = (props) => {
 export default ScheduleTopBar;
 
 const TopBar = styled.View`
-  height: 90px;
+  height: 120px;
   width: 100%;
   background-color: #1f2025;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 const DayName = styled.Text`
