@@ -17,12 +17,12 @@ export default function daySchedule(props) {
                 <ActivityIndicator/>
             ) : (
                 <>
-                    {context.showAd && <AdMobBanner
+                    {/* {context.showAd && <AdMobBanner
                         bannerSize="banner"
                         adUnitID="ca-app-pub-1986591976683938/4671126532"
                         servePersonalizedAds={true} // true or false
                         onDidFailToReceiveAdWithError={() => setTimeout(() => context.setShowAd(false), 0)}
-                    />}
+                    />} */}
                     <FlatList
                         style={{
                             width: "100%",
