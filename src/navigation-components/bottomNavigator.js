@@ -1,21 +1,21 @@
-import Schedule from "../../assets/images-components/Scheduleicon";
-import SettingsView from "../view-components/settingsView";
-import Menu from "../../assets/images-components/menuicon";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
-import ScheduleScreen from "../logic-components/scheduleScreen";
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import Schedule from '../../assets/images-components/Scheduleicon';
+import SettingsView from '../view-components/settingsView';
+import Menu from '../../assets/images-components/menuicon';
+import ScheduleScreen from '../logic-components/scheduleScreen';
 
 const BottomTabNavigator = createBottomTabNavigator();
 
 const homeTabStyles = {
   showLabel: false,
-  activeTintColor: "#e91e63",
+  activeTintColor: '#e91e63',
   style: {
-    backgroundColor: "#1f2025",
-    borderTopColor: "#1f2025",
+    backgroundColor: '#1f2025',
+    borderTopColor: '#1f2025',
   },
-}
+};
 
 const bottomNavigator = () => (
   <NavigationContainer>
@@ -39,6 +39,6 @@ const bottomNavigator = () => (
       />
     </BottomTabNavigator.Navigator>
   </NavigationContainer>
-)
+);
 
 export default bottomNavigator;

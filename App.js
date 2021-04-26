@@ -104,6 +104,7 @@ const App = () => {
     setVisibleModalDialog: (isVisible) => setVisibleModalDialog(isVisible),
     setVisibleBottomSheet: (isVisible) => setVisibleBottomSheet(isVisible),
     setShowAd: (showApp) => setShowAd(showApp),
+    setWeekNumber: (weekNumber) => setWeekNumber(weekNumber),
     currentGroup,
     isError,
     errorText,

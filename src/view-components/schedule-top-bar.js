@@ -1,16 +1,16 @@
-import styled from "styled-components/native/dist/styled-components.native.esm";
-import React, { useContext } from "react";
-import AppContext from "../utils/context";
+import styled from 'styled-components/native/dist/styled-components.native.esm';
+import React, { useContext } from 'react';
+import AppContext from '../utils/context';
 
 const ScheduleTopBar = (props) => {
   const context = useContext(AppContext);
 
   return (
     <TopBar>
-        <DayName>{props.day}</DayName>
-        <WeekNumberView>
-          <WeekNumber>{`Неделя ${context.weekNumber}`}</WeekNumber>
-        </WeekNumberView>
+      <DayName>{props.day}</DayName>
+      <WeekNumberView>
+        <WeekNumber>{`Неделя ${context.weekNumber}`}</WeekNumber>
+      </WeekNumberView>
     </TopBar>
   );
 };

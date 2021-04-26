@@ -1,17 +1,17 @@
-import { NavigationContainer } from "@react-navigation/native";
-import daySchedule from "../logic-components/daySchedule";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import React, { useContext } from "react";
-import AppContext from "../utils/context";
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React, { useContext } from 'react';
+import daySchedule from '../logic-components/daySchedule';
+import AppContext from '../utils/context';
 
 const DaysTopBarNavigator = createMaterialTopTabNavigator();
 
 const dayTabStyles = {
-  activeTintColor: "#497dcd",
-  inactiveTintColor: "gray",
+  activeTintColor: '#497dcd',
+  inactiveTintColor: 'gray',
   labelStyle: { fontSize: 16 },
   style: {
-    backgroundColor: "#1f2025"
+    backgroundColor: '#1f2025'
   }
 };
 
@@ -19,35 +19,35 @@ const DaysNavigator = (props) => {
 
   const days = [
     {
-      dayFullName: "Понедельник",
-      daySortName: "Пн"
+      dayFullName: 'Понедельник',
+      daySortName: 'Пн'
     },
     {
-      dayFullName: "Вторник",
-      daySortName: "Вт"
+      dayFullName: 'Вторник',
+      daySortName: 'Вт'
     },
     {
-      dayFullName: "Среда",
-      daySortName: "Ср"
+      dayFullName: 'Среда',
+      daySortName: 'Ср'
     },
     {
-      dayFullName: "Четверг",
-      daySortName: "Чт"
+      dayFullName: 'Четверг',
+      daySortName: 'Чт'
     },
     {
-      dayFullName: "Пятница",
-      daySortName: "Пт"
+      dayFullName: 'Пятница',
+      daySortName: 'Пт'
     },
     {
-      dayFullName: "Суббота",
-      daySortName: "Сб"
+      dayFullName: 'Суббота',
+      daySortName: 'Сб'
     }
   ];
 
   const schedule = useContext(AppContext);
 
   return (
-    <NavigationContainer independent={true}>
+    <NavigationContainer independent>
       <DaysTopBarNavigator.Navigator
         initialRouteName={schedule.initialDay}
         tabBarOptions={dayTabStyles}

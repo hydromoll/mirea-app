@@ -1,28 +1,28 @@
-import React, { useRef } from "react";
-import { Linking } from "react-native";
-import RBSheet from "react-native-raw-bottom-sheet";
-import styled from "styled-components/native";
-import normalize from "../utils/normalizeFontSize";
-import { Mail, Tg, Vk } from "../../assets/images-components/Icons";
+import React, { useRef } from 'react';
+import { Linking } from 'react-native';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import styled from 'styled-components/native';
+import normalize from '../utils/normalizeFontSize';
+import { Mail, Tg, Vk } from '../../assets/images-components/Icons';
 
 export default function BottomSheetView() {
   const refRBSheet = useRef();
 
   const buttonList = [
     {
-      title: "ВКонтакте",
+      title: 'ВКонтакте',
       icon: <Vk />,
-      link: "https://vk.com/hydromol"
+      link: 'https://vk.com/hydromol'
     },
     {
-      title: "Telegram",
+      title: 'Telegram',
       icon: <Tg />,
-      link: "https://t.me/hydromoll"
+      link: 'https://t.me/hydromoll'
     },
     {
-      title: "Электронная почта",
+      title: 'Электронная почта',
       icon: <Mail />,
-      link: "mailto:hydromoll@mail.ru"
+      link: 'mailto:hydromoll@mail.ru'
     }
   ];
 
@@ -32,17 +32,17 @@ export default function BottomSheetView() {
       <RBSheet
         ref={refRBSheet}
         height={380}
-        closeOnDragDown={true}
-        closeOnPressMask={true}
+        closeOnDragDown
+        closeOnPressMask
         customStyles={{
           wrapper: {
-            backgroundColor: "rgba(0,0,128,0.10)"
+            backgroundColor: 'rgba(0,0,128,0.10)'
           },
           draggableIcon: {
-            backgroundColor: "#959688"
+            backgroundColor: '#959688'
           },
           container: {
-            backgroundColor: "#1f2025",
+            backgroundColor: '#1f2025',
             borderTopLeftRadius: 30,
             borderTopRightRadius: 30
           }
@@ -68,7 +68,8 @@ export default function BottomSheetView() {
                     <ItemText>{title}</ItemText>
                   </ItemTextWrapper>
                 </Name>
-              </Search>))}
+              </Search>
+            ))}
           </ListContainer>
         </Buttons>
       </RBSheet>
@@ -126,7 +127,7 @@ const Close = styled.Text`
 const ListContainer = styled.View`
   width: 100%;
   margin-top: 25px;
-`
+`;
 
 const Icon = styled.View`
 `;

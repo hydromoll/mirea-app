@@ -1,6 +1,6 @@
-import styled from "styled-components/native/dist/styled-components.native.esm";
-import React from "react";
-import normalize from "../utils/normalizeFontSize";
+import styled from 'styled-components/native/dist/styled-components.native.esm';
+import React from 'react';
+import normalize from '../utils/normalizeFontSize';
 
 const PairCard = (props) => (
   <Card key={props.item.key}>
@@ -9,14 +9,16 @@ const PairCard = (props) => (
       <Endtime style={{ marginTop: 10 }}>{`${props.item.endTime}`}</Endtime>
     </Time>
     <Title>
-      <Name>{`${props.name + (props.name && ",") || "—"} ${props.type}`}</Name>
-      <Prof style={{ color: "gray" }}>{`${props.professor || "—"}`}</Prof>
+      <Name>{`${props.name + (props.name && ',') || '—'} ${props.type}`}</Name>
+      <Prof style={{ color: 'gray' }}>{`${props.professor || '—'}`}</Prof>
     </Title>
     <Room
       style={{
-        color: "white"
+        color: 'white'
       }}
-    >{`${props.room || "—"}`}</Room>
+    >
+      {`${props.room || '—'}`}
+    </Room>
   </Card>
 );
 

@@ -1,4 +1,4 @@
-const formatePairData = (pair, type) => {
+const formatePairData = (pair) => {
   return {
     name: pair.name,
     room: pair.room,
@@ -11,29 +11,31 @@ const convertScheduleData = (data) => {
   const { schedule } = data;
   let convertedData = [];
   schedule.forEach((globalPair) => {
-    const { day, number, info: pairs, interval, type } = globalPair;
+    const {
+      day, number, info: pairs, interval, type
+    } = globalPair;
 
     const updatePair = {
       info: {},
       startTime: interval.startTime,
       endTime: interval.endTime,
-      number: number,
-      day: day,
+      number,
+      day,
     };
 
     pairs.forEach((pair) => {
       const weekType = pair.weeks;
-      if (weekType === "odd") {
-        updatePair.info[weekType] = formatePairData(pair, type);
-      } else if (weekType === "even") {
-        updatePair.info[weekType] = formatePairData(pair, type);
-      } else if (weekType.includes(",")) {
-        const parsedWeeks = weekType.split(",");
+      if (weekType === 'odd') {
+        updatePair.info[weekType] = formatePairData(pair);
+      } else if (weekType === 'even') {
+        updatePair.info[weekType] = formatePairData(pair);
+      } else if (weekType.includes(',')) {
+        const parsedWeeks = weekType.split(',');
         parsedWeeks.forEach((weekNumber) => {
-          updatePair.info[weekNumber] = formatePairData(pair, type);
+          updatePair.info[weekNumber] = formatePairData(pair);
         });
       } else if (weekType.length === 1) {
-        updatePair.info[weekType] = formatePairData(pair, type);
+        updatePair.info[weekType] = formatePairData(pair);
       }
     });
     convertedData.push(updatePair);
@@ -51,7 +53,7 @@ export default convertScheduleData;
 // week is odd, even, number "3,7" and "3"
 
 // adapted data
-/*[
+/* [
   {
     startTime: "",
     endTime: "",
@@ -69,4 +71,4 @@ export default convertScheduleData;
       7: {},
     },
   },
-];*/
+]; */

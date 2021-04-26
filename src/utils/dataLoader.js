@@ -1,4 +1,3 @@
-
 export function getDaySchedule(weekSchedule, dayNumber) {
   return weekSchedule
     .slice(dayNumber * 6, 6 + 6 * dayNumber)
@@ -10,7 +9,8 @@ export function getDaySchedule(weekSchedule, dayNumber) {
 }
 
 export function loadSchedule(groupName) {
-  return fetch(`http://api.mirea-assistant.ru/schedule?group=${groupName}`).then(scheduleRes => scheduleRes.json());
+  return fetch(`http://api.mirea-assistant.ru/schedule?group=${groupName}`)
+    .then((scheduleRes) => scheduleRes.json());
   //   .then((schedule) => {
   // }))
   // .catch((error) => console.error(error))
@@ -18,9 +18,11 @@ export function loadSchedule(groupName) {
 }
 
 export function loadGroups(callbackGroup, callbackLoading) {
-  fetch("http://api.mirea-assistant.ru").then(groupsRes => groupsRes.json().then((groups) => {
-    callbackGroup(groups);
-  }))
+  fetch('http://api.mirea-assistant.ru')
+    .then((groupsRes) => groupsRes.json()
+      .then((groups) => {
+        callbackGroup(groups);
+      }))
     .catch((error) => console.error(error))
     .finally(() => callbackLoading(false));
 }

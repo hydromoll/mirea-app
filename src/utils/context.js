@@ -1,23 +1,31 @@
-import React from "react";
+import React from 'react';
 
 const AppContext = React.createContext({
   isLoadingSchedule: true,
   schedule: [],
-  weekNumber: "0",
-  weekName: "odd",
+  weekNumber: '0',
+  weekName: 'odd',
   startDate: new Date(),
   currentDate: new Date(),
   initialDay: 0,
-  setGroup: () => {},
-  currentGroup: "",
+  setGroup: () => {
+  },
+  currentGroup: '',
   isVisibleModalDialog: false,
-  setVisibleModalDialog: () => {},
+  setVisibleModalDialog: () => {
+  },
   isVisibleBottomSheet: false,
-  setVisibleBottomSheet: () => {},
+  setVisibleBottomSheet: () => {
+  },
+  setWeekNumber: () => {
+  },
   isError: false,
-  errorText: "",
-  setShowAd: () => {},
-  showAd: true
+  errorText: '',
+  setShowAd: () => {
+  },
+  showAd: true,
+  isOpenSelectWeekDialog: false,
+
 });
 
 export default AppContext;
