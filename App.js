@@ -42,7 +42,7 @@ const App = () => {
       const lowerCaseGroup = group.toString().toLocaleLowerCase();
       let transliteratedGroup;
       if (/[а-яА-ЯЁё]/.test(lowerCaseGroup)) {
-        transliteratedGroup = translit.translit(lowerCaseGroup, 1);
+        transliteratedGroup = translit.translit(lowerCaseGroup, 5);
       } else {
         transliteratedGroup = lowerCaseGroup;
       }
