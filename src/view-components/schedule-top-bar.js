@@ -2,13 +2,13 @@ import styled from 'styled-components/native/dist/styled-components.native.esm';
 import React, { useContext } from 'react';
 import AppContext from '../utils/context';
 
-const ScheduleTopBar = (props) => {
+const ScheduleTopBar = ({ day, reference }) => {
   const context = useContext(AppContext);
 
   return (
     <TopBar>
-      <DayName>{props.day}</DayName>
-      <WeekNumberView>
+      <DayName>{day}</DayName>
+      <WeekNumberView onPress={() => reference.current.open()}>
         <WeekNumber>{`Неделя ${context.weekNumber}`}</WeekNumber>
       </WeekNumberView>
     </TopBar>
@@ -32,7 +32,7 @@ const DayName = styled.Text`
   color: #fff;
   margin: 35px 0 0 20px;
 `;
-const WeekNumberView = styled.View`
+const WeekNumberView = styled.TouchableOpacity`
   width: 80px;
   height: 40px;
   margin: 35px 20px 0 0;

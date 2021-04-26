@@ -1,12 +1,12 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import { FlatList } from 'react-native';
 import normalize from '../utils/normalizeFontSize';
 import AppContext from '../utils/context';
 
-export default function BottomSheetView() {
-  const refRBSheet = useRef();
+export default function BottomSheetView(props) {
+  // const refRBSheet = useRef();
   const context = useContext(AppContext);
 
   const changeWeek = (weekNumber) => {
@@ -15,9 +15,8 @@ export default function BottomSheetView() {
 
   return (
     <>
-      <Problem onPress={() => refRBSheet.current.open()}>Возникла проблема?</Problem>
       <RBSheet
-        ref={refRBSheet}
+        ref={props.reference}
         height={400}
         closeOnDragDown
         closeOnPressMask
@@ -43,19 +42,19 @@ export default function BottomSheetView() {
               <Line />
             </HeaderContainer>
             <Cancel>
-              <Close onPress={() => refRBSheet.current.close()}>Закрыть</Close>
+              <Close onPress={() => props.reference.current.close()}>Закрыть</Close>
             </Cancel>
           </Header>
           <FlatList
             style={{ marginTop: 40 }}
             numColumns={4}
+            keyExtractor={(item, index) => index.toString()}
             data={[...Array(16)
               .keys()]}
             renderItem={({ item }) => (
               <WeekItem
                 onPress={() => changeWeek(item + 1)}
                 active={context.weekNumber === item + 1}
-                key={item}
               >
                 <WeekText>{item + 1}</WeekText>
               </WeekItem>
@@ -71,14 +70,6 @@ const Buttons = styled.View`
   padding: 16px;
   width: 100%;
   justify-content: center;
-`;
-
-const Problem = styled.Text`
-  align-self: center;
-  position: absolute;
-  bottom: 15%;
-  font-size: ${normalize(16)};
-  color: #6180e8;
 `;
 
 const HeaderContainer = styled.View`
