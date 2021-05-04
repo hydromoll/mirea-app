@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Start from '../screens/startScreenView';
-import Stgs from '../screens/settingsView';
 import Sec from '../screens/daySchedule';
+import Session from '../screens/sessionView';
+import appMenu from '../screens/appMenu';
 
 const Tb = createStackNavigator();
 export default function MiddleWareNavigator() {
@@ -11,7 +11,7 @@ export default function MiddleWareNavigator() {
     <>
       <NavigationContainer independent>
         <Tb.Navigator
-          initialRouteName="Settings"
+          initialRouteName="Schedule"
           screenOptions={{
             headerShown: true,
             headerTintColor: 'white',
@@ -20,9 +20,12 @@ export default function MiddleWareNavigator() {
             },
           }}
         >
-          <Tb.Screen name="Sec" component={Sec} />
-          <Tb.Screen name="Start" component={Start} />
-          <Tb.Screen name="Настройки" component={Stgs} />
+          <Tb.Screen name="Schedule" component={Sec} />
+          <Tb.Screen name="Настройки" component={appMenu} />
+          <Tb.Screen
+            name="Session"
+            component={Session}
+          />
         </Tb.Navigator>
       </NavigationContainer>
     </>

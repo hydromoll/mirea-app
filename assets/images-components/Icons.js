@@ -1,6 +1,8 @@
-import * as React from "react";
-import Svg, { Circle, G, Path,TSpan } from "react-native-svg";
-import Text from "react-native";
+import * as React from 'react';
+import Svg, {
+  Circle, G, Path, TSpan
+} from 'react-native-svg';
+import Text from 'react-native';
 
 export function Back(props) {
   return (
@@ -180,7 +182,7 @@ export function Sicn(props) {
     </Svg>
   );
 }
-export function Check(props){
+export function Check(props) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
@@ -192,10 +194,10 @@ export function Check(props){
       <Path
         data-name="Icon awesome-check"
         d="M12.227 26.323l-11.7-11.7a1.8 1.8 0 010-2.546l2.546-2.554a1.8 1.8 0 012.546 0l7.881 7.886L30.382.523a1.8 1.8 0 012.546 0l2.545 2.55a1.8 1.8 0 010 2.546l-20.7 20.7a1.8 1.8 0 01-2.546.004z"
-        fill={props.disabled ? "#6A6A74" : "#FFF"}
+        fill={props.disabled ? '#6A6A74' : '#FFF'}
       />
     </Svg>
-  )
+  );
 }
 export function PairsNotFound(props) {
   return (
@@ -318,7 +320,7 @@ export function PairsNotFound(props) {
         fontFamily="HACKED"
       >
         <TSpan x={0} y={0}>
-          {"404"}
+          404
         </TSpan>
       </Text>
       <Text
@@ -330,9 +332,55 @@ export function PairsNotFound(props) {
         fontWeight={500}
       >
         <TSpan x={0} y={0}>
-          {"Pairs not found"}
+          Pairs not found
         </TSpan>
       </Text>
     </Svg>
-  )
+  );
+}
+
+export function MenuIcon({ focused }) {
+  return (
+    <Svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={25}
+      height={25}
+      viewBox="0 0 612 612"
+      fill={focused ? '#497dcd' : '#4b4f5b'}
+    >
+      <Path
+        d="M63.311 73.862C28.342 73.862 0 102.204 0 137.172s28.342 63.311 63.311 63.311c34.968 0 63.31-28.342 63.31-63.311s-28.342-63.31-63.31-63.31zm0 168.827C28.342 242.689 0 271.032 0 306c0 34.969 28.342 63.311 63.311 63.311 34.968 0 63.31-28.342 63.31-63.311 0-34.968-28.342-63.311-63.31-63.311zm0 168.829C28.342 411.518 0 439.859 0 474.827c0 34.969 28.342 63.311 63.311 63.311 34.968 0 63.31-28.342 63.31-63.311 0-34.968-28.342-63.309-63.31-63.309zm168.827-232.139h337.655c23.319 0 42.207-18.888 42.207-42.207s-18.888-42.207-42.207-42.207H232.138c-23.319 0-42.207 18.888-42.207 42.207s18.888 42.207 42.207 42.207zm337.655 84.414H232.138c-23.319 0-42.207 18.888-42.207 42.207s18.888 42.207 42.207 42.207h337.655C593.112 348.207 612 329.319 612 306s-18.888-42.207-42.207-42.207zm0 168.828H232.138c-23.319 0-42.207 18.887-42.207 42.206s18.888 42.207 42.207 42.207h337.655c23.319 0 42.207-18.888 42.207-42.207s-18.888-42.206-42.207-42.206z"
+      />
+    </Svg>
+  );
+}
+
+export function ScheduleIcon({ focused }) {
+  return (
+    <Svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      fill={focused ? '#497dcd' : '#4b4f5b'}
+      height={25}
+      width={25}
+    >
+      <Circle cx={386} cy={210} r={20} />
+      <Path
+        d="M432 40h-26V20c0-11.046-8.954-20-20-20s-20 8.954-20 20v20h-91V20c0-11.046-8.954-20-20-20s-20 8.954-20 20v20h-90V20c0-11.046-8.954-20-20-20s-20 8.954-20 20v20H80C35.888 40 0 75.888 0 120v312c0 44.112 35.888 80 80 80h153c11.046 0 20-8.954 20-20s-8.954-20-20-20H80c-22.056 0-40-17.944-40-40V120c0-22.056 17.944-40 40-40h25v20c0 11.046 8.954 20 20 20s20-8.954 20-20V80h90v20c0 11.046 8.954 20 20 20s20-8.954 20-20V80h91v20c0 11.046 8.954 20 20 20s20-8.954 20-20V80h26c22.056 0 40 17.944 40 40v114c0 11.046 8.954 20 20 20s20-8.954 20-20V120c0-44.112-35.888-80-80-80z"
+      />
+      <Path
+        d="M391 270c-66.72 0-121 54.28-121 121s54.28 121 121 121 121-54.28 121-121-54.28-121-121-121zm0 202c-44.663 0-81-36.336-81-81s36.337-81 81-81 81 36.336 81 81-36.337 81-81 81z"
+      />
+      <Path
+        d="M420 371h-9v-21c0-11.046-8.954-20-20-20s-20 8.954-20 20v41c0 11.046 8.954 20 20 20h29c11.046 0 20-8.954 20-20s-8.954-20-20-20z"
+      />
+      <Circle cx={299} cy={210} r={20} />
+      <Circle cx={212} cy={297} r={20} />
+      <Circle cx={125} cy={210} r={20} />
+      <Circle cx={125} cy={297} r={20} />
+      <Circle cx={125} cy={384} r={20} />
+      <Circle cx={212} cy={384} r={20} />
+      <Circle cx={212} cy={210} r={20} />
+    </Svg>
+  );
 }

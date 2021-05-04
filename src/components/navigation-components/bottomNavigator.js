@@ -1,11 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import Schedule from '../../../assets/images-components/Scheduleicon';
-import Menu from '../../../assets/images-components/menuicon';
-import Settings from '../screens/appMenu';
+import AppMenu from '../screens/appMenu';
 import ScheduleScreen from '../screens/scheduleScreen';
-import Session from '../screens/sessionView';
+import {
+  MenuIcon,
+  ScheduleIcon
+} from '../../../assets/images-components/Icons';
 
 const BottomTabNavigator = createBottomTabNavigator();
 
@@ -28,21 +29,14 @@ const bottomNavigator = () => (
         name="Home"
         component={ScheduleScreen}
         options={{
-          tabBarIcon: ({ focused }) => <Schedule focused={focused} />,
+          tabBarIcon: ({ focused }) => <ScheduleIcon focused={focused} />,
         }}
       />
       <BottomTabNavigator.Screen
         name="Settings"
-        component={Settings}
+        component={AppMenu}
         options={{
-          tabBarIcon: ({ focused }) => <Menu focused={focused} />,
-        }}
-      />
-      <BottomTabNavigator.Screen
-        name="Session"
-        component={Session}
-        options={{
-          tabBarIcon: ({ focused }) => <Menu focused={focused} />,
+          tabBarIcon: ({ focused }) => <MenuIcon focused={focused} />,
         }}
       />
     </BottomTabNavigator.Navigator>

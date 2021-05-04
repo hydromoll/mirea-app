@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import Session from './sessionView';
 import { Contact, Mail, Sicn, Tg, Vk } from '../../../assets/images-components/Icons';
 
-export default function App({ navigation }) {
+export default function appMenu({ navigation }) {
   const sheetRef = React.useRef(0);
   const buttonList = [
     {
