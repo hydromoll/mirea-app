@@ -7,6 +7,7 @@ import {
   MenuIcon,
   ScheduleIcon
 } from '../../../assets/images-components/Icons';
+import MiddleWareNavigator from './middleware';
 
 const BottomTabNavigator = createBottomTabNavigator();
 
@@ -33,8 +34,8 @@ const bottomNavigator = () => (
         }}
       />
       <BottomTabNavigator.Screen
-        name="Settings"
-        component={AppMenu}
+        name="StackNavigator"
+        component={MiddleWareNavigator}
         options={{
           tabBarIcon: ({ focused }) => <MenuIcon focused={focused} />,
         }}

@@ -17,6 +17,11 @@ export function loadSchedule(groupName) {
   // .finally(() => callbackLoading(false));
 }
 
+export function loadSession(type, groupName) {
+  return fetch(`http://api.mirea-assistant.ru/${type === 'Зачёты' ? 'tests' : 'exams'}?group=${groupName}`)
+    .then((scheduleRes) => scheduleRes.json());
+}
+
 export function loadGroups(callbackGroup, callbackLoading) {
   fetch('http://api.mirea-assistant.ru')
     .then((groupsRes) => groupsRes.json()

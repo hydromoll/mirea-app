@@ -3,11 +3,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'react-native';
 import Start from './src/components/screens/startScreenView';
 import BottomNavigator from './src/components/navigation-components/bottomNavigator';
-import { loadSchedule } from './src/utils/dataLoader';
+import { loadSchedule, loadSession } from './src/utils/dataLoader';
 import { translit } from './src/utils/transliter';
 import AppContext from './src/utils/context';
 import convertScheduleData from './src/utils/daysAdapter';
 import getWeekNumber from './src/utils/calculateWeek';
+import normalizeDaysArray from './src/utils/daysFormatter';
 
 const App = () => {
   const [showRealApp, setShowRealApp] = useState(false);
@@ -24,6 +25,8 @@ const App = () => {
   const [errorText, setErrorTextState] = useState('');
   const [isAppLoading, setAppLoading] = useState(true);
   const [showAd, setShowAd] = useState(true);
+  const [examsSchedule, setExamsSchedule] = useState([]);
+  const [nonExamSchedule, setNonExamSchedule] = useState([]);
 
   const getGroupFromStorage = async () => {
     try {
@@ -85,6 +88,11 @@ const App = () => {
           // console.warn("Ошибка подключения к интернету");
         })
         .finally(() => setLoadingSchedule(false));
+
+      loadSession('Зачёты', transliteratedGroup)
+        .then((data) => setNonExamSchedule(normalizeDaysArray(data)));
+      loadSession('Экзамены', transliteratedGroup)
+        .then((data) => setExamsSchedule(normalizeDaysArray(data)));
     } catch (e) {
 
     }
@@ -115,7 +123,9 @@ const App = () => {
     currentGroup,
     isError,
     errorText,
-    showAd
+    showAd,
+    nonExamSchedule,
+    examsSchedule
   };
 
   if (isAppLoading) {

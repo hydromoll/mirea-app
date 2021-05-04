@@ -1,50 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, Text } from 'react-native';
+import React, { useContext } from 'react';
+import { FlatList, Text } from 'react-native';
 
 import styled from 'styled-components/native';
+import AppContext from '../../utils/context';
+import normalize from '../../utils/normalizeFontSize';
 
-export default function SessionView() {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  console.log(data);
-  useEffect(() => {
-    fetch('http://api.mirea-assistant.ru/exams?group=ivbo-08-19')
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  }, []);
-  // function dateConvert(){
-  //   Date.UTC(item.date)
-  // }
-  // let Date = dateConvert();
+export default function SessionView({ route: { name } }) {
+  const context = useContext(AppContext);
+
   return (
-    <SafeAreaView style={{ backgroundColor: 'green' }}>
-      <Container>
-        <TopBar>
-          <BackButton />
-        </TopBar>
-        <FlatList
-          data={data}
-          keyExtractor={({ type }, index) => type}
-          renderItem={({ item }) => (
-            <View>
-              <Text style={{
-                color: 'white',
-                marginTop: 20,
-                marginLeft: 20
-              }}
-              >
-                {`${new Date(item.date)}, ${item.type} `}
-              </Text>
-              <Name>{item.name}</Name>
-              <Professor>{item.professor || '—'}</Professor>
-              <Room>{item.room}</Room>
-            </View>
-          )}
-        />
-      </Container>
-    </SafeAreaView>
+    <Container>
+      <FlatList
+        data={name === 'Зачёты' ? context.nonExamSchedule : context.examsSchedule}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View>
+            <Text style={{
+              color: 'white',
+              marginTop: 20,
+              marginLeft: 20
+            }}
+            >
+              {item.date}
+            </Text>
+            <Name>{item.name}</Name>
+            <Professor>{item.professor || '—'}</Professor>
+            <Room>{item.room}</Room>
+          </View>
+        )}
+      />
+    </Container>
   );
 }
 const Container = styled.View`
@@ -78,27 +63,13 @@ const Professor = styled.Text`
 `;
 const Room = styled.Text`
   width: 50px;
-  background-color: gray;
+  font-size: ${normalize(13)};
+  background-color: #4b4f5b;
   text-align: center;
   color: white;
   position: absolute;
   right: 10%;
   bottom: 48%;
-`;
-const TopBar = styled.View`
-  justify-content: center;
-  align-items: center;
-  background-color: green;
-  height: 7%;
-  width: 100%;
-`;
-const BackButton = styled.TouchableOpacity`
-  height: 20px;
-  width: 20px;
-  background-color: blue;
-`;
-const Neumorph = styled.View`
-  width: 30%;
-  height: 55px;
-  background-color: green;
+  border-radius: 6px;
+  padding: 5px 5px;
 `;

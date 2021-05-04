@@ -53,7 +53,7 @@ const Name = styled.Text`
   color: white;
 `;
 const Prof = styled.Text`
-font-size: ${normalize(12)};
+  font-size: ${normalize(12)};
   color: gray;`;
 const Title = styled.View`
   padding-top: 5%;

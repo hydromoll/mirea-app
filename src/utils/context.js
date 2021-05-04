@@ -25,7 +25,8 @@ const AppContext = React.createContext({
   },
   showAd: true,
   isOpenSelectWeekDialog: false,
-
+  nonExamSchedule: '',
+  examsSchedule: ''
 });
 
 export default AppContext;
