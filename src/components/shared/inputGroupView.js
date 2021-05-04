@@ -3,8 +3,8 @@ import { css } from 'styled-components';
 import React, { useContext, useRef, useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import SnackBar from 'react-native-snackbar-component';
-import AppContext from '../utils/context';
-import { Check } from '../../assets/images-components/Icons';
+import AppContext from '../../utils/context';
+import { Check } from '../../../assets/images-components/Icons';
 
 const InputGroupView = () => {
   const [text, setText] = useState('');

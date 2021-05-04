@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { ActivityIndicator, FlatList } from 'react-native';
 import styled from 'styled-components/native';
 import { AdMobBanner } from 'expo-ads-admob';
-import AppContext from '../utils/context';
-import { getDaySchedule } from '../utils/dataLoader';
-import PairCard from '../view-components/pairCard';
+import AppContext from '../../utils/context';
+import { getDaySchedule } from '../../utils/dataLoader';
+import PairCard from '../shared/pairCard';
 
 export default function daySchedule(props) {
 

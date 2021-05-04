@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'react-native';
-import Start from './src/view-components/startScreenView';
-import BottomNavigator from './src/navigation-components/bottomNavigator';
+import Start from './src/components/screens/startScreenView';
+import BottomNavigator from './src/components/navigation-components/bottomNavigator';
 import { loadSchedule } from './src/utils/dataLoader';
 import { translit } from './src/utils/transliter';
 import AppContext from './src/utils/context';

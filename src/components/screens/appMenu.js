@@ -1,16 +1,16 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Linking, Text, View } from "react-native";
-import styled from "styled-components/native";
-import Session from '../src/view-components/SessionView';
-import { Contact, Mail, Tg, Vk, Sicn } from "../assets/images-components/Icons";
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { Linking, Text, View } from 'react-native';
+import styled from 'styled-components/native';
+import Session from './sessionView';
+import { Contact, Mail, Sicn, Tg, Vk } from '../../../assets/images-components/Icons';
 
 export default function App({ navigation }) {
   const sheetRef = React.useRef(0);
   const buttonList = [
     {
-      title: "Обратная связь",
-      icon: <Contact />,
+      title: 'Обратная связь',
+      icon: <Contact/>,
       navigation: () => sheetRef.current.snapTo(0),
     },
     {

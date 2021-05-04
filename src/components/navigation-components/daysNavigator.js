@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React, { useContext } from 'react';
-import daySchedule from '../logic-components/daySchedule';
-import AppContext from '../utils/context';
+import daySchedule from '../screens/daySchedule';
+import AppContext from '../../utils/context';
 
 const DaysTopBarNavigator = createMaterialTopTabNavigator();
 

@@ -1,22 +1,22 @@
-import React from "react";
-import Start from "../src/view-components/startScreenView";
-import Stgs from "../src/view-components/settingsView";
-import Sec from "../src/logic-components/daySchedule";
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Start from '../screens/startScreenView';
+import Stgs from '../screens/settingsView';
+import Sec from '../screens/daySchedule';
 
 const Tb = createStackNavigator();
 export default function MiddleWareNavigator() {
   return (
-    <React.Fragment>
+    <>
       <NavigationContainer independent>
         <Tb.Navigator
           initialRouteName="Settings"
           screenOptions={{
             headerShown: true,
-            headerTintColor: "white",
+            headerTintColor: 'white',
             headerStyle: {
-              backgroundColor: "#1f2025",
+              backgroundColor: '#1f2025',
             },
           }}
         >
@@ -25,6 +25,6 @@ export default function MiddleWareNavigator() {
           <Tb.Screen name="Настройки" component={Stgs} />
         </Tb.Navigator>
       </NavigationContainer>
-    </React.Fragment>
+    </>
   );
 }

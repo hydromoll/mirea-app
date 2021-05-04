@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { Linking } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import styled from 'styled-components/native';
-import normalize from '../utils/normalizeFontSize';
-import { Mail, Tg, Vk } from '../../assets/images-components/Icons';
+import normalize from '../../utils/normalizeFontSize';
+import { Mail, Tg, Vk } from '../../../assets/images-components/Icons';
 
 export default function BottomSheetView() {
   const refRBSheet = useRef();

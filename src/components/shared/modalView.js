@@ -1,9 +1,9 @@
 import Modal from 'react-native-modal';
 import styled from 'styled-components/native';
 import React, { useContext } from 'react';
-import normalize from '../utils/normalizeFontSize';
+import normalize from '../../utils/normalizeFontSize';
 import InputGroupView from './inputGroupView';
-import AppContext from '../utils/context';
+import AppContext from '../../utils/context';
 
 const ModalView = () => {
   const context = useContext(AppContext);

@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
-import normalize from '../utils/normalizeFontSize';
-import ModalView from './modalView';
-import {PairsNotFound} from '../../assets/images-components/Icons';
-import logo from '../../assets/images/panda.png';
-import AppContext from '../utils/context';
-import BottomSheetView from './bottomSheet';
+import normalize from '../../utils/normalizeFontSize';
+import ModalView from '../shared/modalView';
+import logo from '../../../assets/images/panda.png';
+import AppContext from '../../utils/context';
+import BottomSheetView from '../shared/bottomSheet';
 
 export default function settingsView() {
 

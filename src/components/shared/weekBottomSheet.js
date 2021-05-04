@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import styled, { css } from 'styled-components/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import { FlatList } from 'react-native';
-import normalize from '../utils/normalizeFontSize';
-import AppContext from '../utils/context';
+import AppContext from '../../utils/context';
 
 export default function BottomSheetView(props) {
   // const refRBSheet = useRef();

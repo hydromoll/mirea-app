@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import normalize from '../utils/normalizeFontSize';
-import InputGroupView from './inputGroupView';
-import BottomSheetView from './bottomSheet';
+import normalize from '../../utils/normalizeFontSize';
+import InputGroupView from '../shared/inputGroupView';
+import BottomSheetView from '../shared/bottomSheet';
 
 export default function startScreenView() {
   return (

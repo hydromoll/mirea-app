@@ -1,6 +1,6 @@
 import styled from 'styled-components/native/dist/styled-components.native.esm';
 import React, { useContext } from 'react';
-import AppContext from '../utils/context';
+import AppContext from '../../utils/context';
 
 const ScheduleTopBar = ({ day, reference }) => {
   const context = useContext(AppContext);

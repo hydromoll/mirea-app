@@ -1,6 +1,6 @@
 import styled from 'styled-components/native/dist/styled-components.native.esm';
 import React from 'react';
-import normalize from '../utils/normalizeFontSize';
+import normalize from '../../utils/normalizeFontSize';
 
 const PairCard = (props) => (
   <Card key={props.item.key}>

@@ -1,12 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import Schedule from '../../assets/images-components/Scheduleicon';
-import SettingsView from '../view-components/settingsView';
-import Menu from '../../assets/images-components/menuicon';
-import Settings from "../../deprecated/Settings";
-import ScheduleScreen from '../logic-components/scheduleScreen';
-import Session from '../view-components/SessionView';
+import Schedule from '../../../assets/images-components/Scheduleicon';
+import Menu from '../../../assets/images-components/menuicon';
+import Settings from '../screens/appMenu';
+import ScheduleScreen from '../screens/scheduleScreen';
+import Session from '../screens/sessionView';
 
 const BottomTabNavigator = createBottomTabNavigator();
 
