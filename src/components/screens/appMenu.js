@@ -20,7 +20,6 @@ export default function appMenu({ navigation }) {
   return (
     <React.Fragment>
       <Container>
-        <StatusBar style="auto"/>
         {buttonList.map(({
           title,
           icon,
