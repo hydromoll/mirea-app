@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Linking, Text, View } from "react-native";
 import styled from "styled-components/native";
-import Sicn from "../assets/images/Settingsicn";
-import { Contact, Mail, Tg, Vk } from "../assets/images/Icons";
+import Session from '../src/view-components/SessionView';
+import { Contact, Mail, Tg, Vk, Sicn } from "../assets/images-components/Icons";
 
 export default function App({ navigation }) {
   const sheetRef = React.useRef(0);
@@ -16,7 +16,12 @@ export default function App({ navigation }) {
     {
       title: "Настройки",
       icon: <Sicn />,
-      navigation: () => navigation.navigate("Настройки"),
+      navigation: () => navigation.navigate("Home"),
+    },
+    {
+      title: "Расписание сессии",
+      icon: <Sicn />,
+      navigation: () => navigation.navigate("Session"),
     },
   ];
   const renderContent = () => (

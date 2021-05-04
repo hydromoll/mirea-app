@@ -4,7 +4,9 @@ import React from 'react';
 import Schedule from '../../assets/images-components/Scheduleicon';
 import SettingsView from '../view-components/settingsView';
 import Menu from '../../assets/images-components/menuicon';
+import Settings from "../../deprecated/Settings";
 import ScheduleScreen from '../logic-components/scheduleScreen';
+import Session from '../view-components/SessionView';
 
 const BottomTabNavigator = createBottomTabNavigator();
 
@@ -32,7 +34,14 @@ const bottomNavigator = () => (
       />
       <BottomTabNavigator.Screen
         name="Settings"
-        component={SettingsView}
+        component={Settings}
+        options={{
+          tabBarIcon: ({ focused }) => <Menu focused={focused} />,
+        }}
+      />
+      <BottomTabNavigator.Screen
+        name="Session"
+        component={Session}
         options={{
           tabBarIcon: ({ focused }) => <Menu focused={focused} />,
         }}

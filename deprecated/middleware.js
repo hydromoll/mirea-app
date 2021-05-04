@@ -2,7 +2,6 @@ import React from "react";
 import Start from "../src/view-components/startScreenView";
 import Stgs from "../src/view-components/settingsView";
 import Sec from "../src/logic-components/daySchedule";
-
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
