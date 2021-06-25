@@ -80,7 +80,7 @@ export default function BottomSheetView() {
 const Problem = styled.Text`
   align-self: center;
   position: absolute;
-  bottom: 15%;
+  bottom: 23%;
   font-size: ${normalize(16)};
   color: #6180e8;
 `;

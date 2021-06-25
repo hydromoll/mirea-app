@@ -11,9 +11,7 @@ const convertScheduleData = (data) => {
   const { schedule } = data;
   let convertedData = [];
   schedule.forEach((globalPair) => {
-    const {
-      day, number, info: pairs, interval, type
-    } = globalPair;
+    const { day, number, info: pairs, interval, type } = globalPair;
 
     const updatePair = {
       info: {},
@@ -25,12 +23,12 @@ const convertScheduleData = (data) => {
 
     pairs.forEach((pair) => {
       const weekType = pair.weeks;
-      if (weekType === 'odd') {
+      if (weekType === "odd") {
         updatePair.info[weekType] = formatePairData(pair);
-      } else if (weekType === 'even') {
+      } else if (weekType === "even") {
         updatePair.info[weekType] = formatePairData(pair);
-      } else if (weekType.includes(',')) {
-        const parsedWeeks = weekType.split(',');
+      } else if (weekType.includes(",")) {
+        const parsedWeeks = weekType.split(",");
         parsedWeeks.forEach((weekNumber) => {
           updatePair.info[weekNumber] = formatePairData(pair);
         });

@@ -70,6 +70,7 @@ const Room = styled.Text`
   position: absolute;
   right: 10%;
   bottom: 48%;
-  border-radius: 6px;
   padding: 5px 5px;
+  border-radius: 40px;
+  
 `;

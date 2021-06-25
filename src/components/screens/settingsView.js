@@ -39,7 +39,7 @@ const Container = styled.View`
 const TopBar = styled.View`
   align-items: center;
   justify-content: center;
-  height: 45%;
+  height: 35%;
   width: 100%;
   background-color: #1f2025;
   border-bottom-left-radius: 22px;

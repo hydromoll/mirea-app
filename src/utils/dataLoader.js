@@ -9,8 +9,9 @@ export function getDaySchedule(weekSchedule, dayNumber) {
 }
 
 export function loadSchedule(groupName) {
-  return fetch(`http://api.mirea-assistant.ru/schedule?group=${groupName}`)
-    .then((scheduleRes) => scheduleRes.json());
+  return fetch(
+    `http://api.mirea-assistant.ru/schedule?group=${groupName}`
+  ).then((scheduleRes) => scheduleRes.json());
   //   .then((schedule) => {
   // }))
   // .catch((error) => console.error(error))
@@ -18,16 +19,24 @@ export function loadSchedule(groupName) {
 }
 
 export function loadSession(type, groupName) {
-  return fetch(`http://api.mirea-assistant.ru/${type === 'Зачёты' ? 'tests' : 'exams'}?group=${groupName}`)
-    .then((scheduleRes) => scheduleRes.json());
+  return fetch(
+    `http://api.mirea-assistant.ru/${
+      type === "Зачёты" ? "tests" : "exams"
+    }?group=${groupName}`
+  ).then((scheduleRes) => scheduleRes.json());
 }
-
+export function loadProfSchedule(profName) {
+  return fetch(
+    `http://api.mirea-assistant.ru/professor?query=${profName}`
+  ).then((profResponse) => profResponse.json());
+}
 export function loadGroups(callbackGroup, callbackLoading) {
-  fetch('http://api.mirea-assistant.ru')
-    .then((groupsRes) => groupsRes.json()
-      .then((groups) => {
+  fetch("http://api.mirea-assistant.ru")
+    .then((groupsRes) =>
+      groupsRes.json().then((groups) => {
         callbackGroup(groups);
-      }))
+      })
+    )
     .catch((error) => console.error(error))
     .finally(() => callbackLoading(false));
 }

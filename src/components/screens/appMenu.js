@@ -16,6 +16,12 @@ export default function appMenu({ navigation }) {
       icon: <Sicn/>,
       navigation: () => navigation.navigate('Настройки'),
     },
+    {
+      title: 'Поиск преподавателя',
+      icon: <Sicn/>,
+      navigation: () => navigation.navigate('Поиск преподавателя'),
+    },
+
   ];
   return (
     <React.Fragment>

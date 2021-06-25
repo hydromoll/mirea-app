@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import settingsView from '../screens/settingsView';
 import appMenu from '../screens/appMenu';
 import sessionNavigator from './sessionNavigator';
+import searchProf from '../screens/searchProf';
 
 const Tb = createStackNavigator();
 export default function MiddleWareNavigator() {
@@ -25,6 +26,10 @@ export default function MiddleWareNavigator() {
           <Tb.Screen
             name="Расписание сессии"
             component={sessionNavigator}
+          />
+          <Tb.Screen
+            name="Поиск преподавателя"
+            component={searchProf}
           />
         </Tb.Navigator>
       </NavigationContainer>
